@@ -1,0 +1,16 @@
+[X] Remplir cette case
+
+[X] Centraliser au mieux les sources
+
+[] Centraliser les conversions :
+	[] Se baser sur la couche C# d'enox
+	[] Gérer les mat de byte/short/int/float/double...
+	[] Eviter vertical revert
+
+[] Changer type et éviter cast dans cpp générés
+
+[X] DLL unique pour windows
+
+[] Créer samples dans OpenCVUnityProject/Assets/OpenCVUnity/Samples
+
+[] Revoir éventuellement la licence si on veut faire ça opensource
