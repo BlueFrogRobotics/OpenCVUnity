@@ -1,0 +1,51 @@
+#ifndef QRCODE_HPP
+#define QRCODE_HPP
+
+#include <cstdlib>
+#include <algorithm>
+
+#include "opencv2\core\mat.hpp"
+#include "opencv2\core\base.hpp"
+#include "opencv2\core\utility.hpp"
+#include "opencv2\core\operations.hpp"
+#include "opencv2\core\csharp_converter.hpp"
+
+#include "..\..\imgproc\include\opencv2\imgproc.hpp"
+#include "opencv2\highgui.hpp"
+#include "opencv2\ml.hpp"
+#include "opencv2\video.hpp"
+#include "opencv2\core.hpp"
+#include "opencv2\objdetect.hpp"
+#include "opencv2\calib3d.hpp"
+#include "opencv2\features2d.hpp"
+#include "opencv2\flann.hpp"
+#include "opencv2\imgcodecs.hpp"
+#include "opencv2\videoio.hpp"
+#include "opencv2\video.hpp"
+#include "opencv2\hal.hpp"
+#include "opencv2\stitching.hpp"
+#include "opencv2\photo.hpp"
+#include "opencv2\shape.hpp"
+#include "opencv2\superres.hpp"
+#include "opencv2\videostab.hpp"
+#include "opencv2\features2d_manual.hpp"
+
+namespace cv {
+	const int CV_QR_NORTH = 0;
+	const int CV_QR_EAST = 1;
+	const int CV_QR_SOUTH = 2;
+	const int CV_QR_WEST = 3;
+
+	const char* qrCode_decode(Mat& qrcode);
+	void qrCode(Mat& image, std::vector<Mat>& correctedimage, std::vector<Point2f>& iVec);
+	float computeDistance(Point2f iFirstPoint, Point2f iSecondPoint);
+	float lineEquation(Point2f iFirstPoint, Point2f iSecondPoint, Point2f iThirdPoint);
+	float lineSlope(Point2f iFirstPoint, Point2f iSecondPoint, int& alignement);
+	void getVertices(std::vector<std::vector<Point>> contours, int c_id, float slope, std::vector<Point2f>& X);
+	void updateCorner(Point2f iFirstPoint, Point2f iSecondPoint, float& baseline, Point2f& corner);
+	void updateCornerOr(int orientation, std::vector<Point2f> IN, std::vector<Point2f> &OUT);
+	bool getIntersectionPoint(Point2f a1, Point2f a2, Point2f b1, Point2f b2, Point2f& intersection);
+	float cross(Point2f v1, Point2f v2);
+}
+
+#endif
