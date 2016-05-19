@@ -1,10 +1,6 @@
 #include "opencv2/opencv_modules.hpp"
 #include "opencv2/core.hpp"
 
-typedef unsigned uint;
-typedef signed char schar;
-typedef unsigned char uchar;
-typedef unsigned short ushort;
 
 void Mat_to_vector_int(cv::Mat& mat, std::vector<int>& v_int);
 void vector_int_to_Mat(std::vector<int>& v_int, cv::Mat& mat);
@@ -23,6 +19,7 @@ void vector_char_to_Mat(std::vector<char>& v_char, cv::Mat& mat);
 
 void Mat_to_vector_Rect(cv::Mat& mat, std::vector<cv::Rect>& v_rect);
 void vector_Rect_to_Mat(std::vector<cv::Rect>& v_rect, cv::Mat& mat);
+
 
 void Mat_to_vector_Point(cv::Mat& mat, std::vector<cv::Point>& v_point);
 void Mat_to_vector_Point2f(cv::Mat& mat, std::vector<cv::Point2f>& v_point);
@@ -63,19 +60,19 @@ void texture_to_mat_4chan(unsigned char* dst, const unsigned char* src, size_t n
 void mat_3chan_to_texture(unsigned char* dst, const unsigned char* src, size_t n);
 void texture_to_mat_3chan(unsigned char* dst, const unsigned char* src, size_t n);
 
-void mat_1chan_to_texture(unsigned char* dst, const unsigned char* src, size_t n);
+void mat_1chan_to_texture(unsigned char* dst, const unsigned char* src,size_t n);
 void texture_to_mat_1chan(unsigned char* dst, const unsigned char* src, size_t n);
 
 extern "C" {
-	JNIEXPORT void opencvunity_MatDataToArray(cv::Mat* mat, uchar* array);
-	JNIEXPORT uchar* opencvunity_GetFilePath(uchar* filename);
-	JNIEXPORT void opencvunity_MatToTexture(cv::Mat* mat, uchar* textureColors);
-	JNIEXPORT void opencvunity_TextureToMat(uchar* textureColors, cv::Mat* mat);
-	JNIEXPORT void opencvunity_MatDataToByteArray(cv::Mat* mat, uchar* byteArray);
-	JNIEXPORT void opencvunity_ByteArrayToMatData(uchar* byteArray, cv::Mat* mat);
-	JNIEXPORT void opencvunity_TextureDataToByteArray(void* texPtr, int texWidth, int texHeight, uchar* byteArray, int bytesPerPixel);
-	JNIEXPORT void opencvunity_ByteArrayToTextureData(uchar* byteArray, void* texPtr, int texWidth, int texHeight, int bytesPerPixel);
-	JNIEXPORT void opencvunity_LowLevelMatToTexture(cv::Mat* mat, void* texPtr, int texWidth, int texHeight);
-	JNIEXPORT void opencvunity_LowLevelTextureToMat(void* texPtr, int texWidth, int texHeight, cv::Mat* mat);
-	JNIEXPORT int opencvunity_GetLowLevelTextureFormat(void* texPtr);
+JNIEXPORT void opencvunity_MatDataToArray(cv::Mat* mat, unsigned char* array);
+JNIEXPORT unsigned char* opencvunity_GetFilePath(unsigned char* filename);
+JNIEXPORT void opencvunity_MatToTexture(cv::Mat* mat, unsigned char* textureColors);
+JNIEXPORT void opencvunity_TextureToMat(unsigned char* textureColors, cv::Mat* mat);
+JNIEXPORT void opencvunity_MatDataToByteArray(cv::Mat* mat, unsigned char* byteArray);
+JNIEXPORT void opencvunity_ByteArrayToMatData(unsigned char* byteArray, cv::Mat* mat);
+JNIEXPORT void opencvunity_TextureDataToByteArray(void* texPtr, int texWidth, int texHeight, unsigned char* byteArray, int bytesPerPixel);
+JNIEXPORT void opencvunity_ByteArrayToTextureData(unsigned char* byteArray, void* texPtr, int texWidth, int texHeight, int bytesPerPixel);
+JNIEXPORT void opencvunity_LowLevelMatToTexture(cv::Mat* mat, void* texPtr, int texWidth, int texHeight);
+JNIEXPORT void opencvunity_LowLevelTextureToMat(void* texPtr, int texWidth, int texHeight, cv::Mat* mat);
+JNIEXPORT int opencvunity_GetLowLevelTextureFormat(void* texPtr);
 }

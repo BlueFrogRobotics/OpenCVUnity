@@ -49,7 +49,7 @@ extern "C" {
 		return (jlong) new cv::Mat();
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1Mat__
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1Mat__
 		()
 	{
 		return new cv::Mat();
@@ -82,7 +82,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1Mat__III
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1Mat__III
 		(int rows, int cols, int type)
 	{
 		return new Mat(rows, cols, type);
@@ -117,7 +117,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1Mat__DDI
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1Mat__DDI
 		(double size_width, double size_height, int type)
 	{
 
@@ -157,7 +157,7 @@ extern "C" {
 
 
 
-	JNIEXPORT Mat* core_Mat_n_1Mat__IIIDDDD
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1Mat__IIIDDDD
 		(int rows, int cols, int type, double s_val0, double s_val1, double s_val2, double s_val3)
 	{
 		Scalar s(s_val0, s_val1, s_val2, s_val3);
@@ -194,7 +194,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1Mat__DDIDDDD
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1Mat__DDIDDDD
 		(double size_width, double size_height, int type, double s_val0, double s_val1, double s_val2, double s_val3)
 	{
 
@@ -233,7 +233,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1Mat__JIIII
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1Mat__JIIII
 		(Mat* m_nativeObj, int rowRange_start, int rowRange_end, int colRange_start, int colRange_end)
 	{
 		Range rowRange(rowRange_start, rowRange_end);
@@ -266,7 +266,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1Mat__JII
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1Mat__JII
 		(Mat* m_nativeObj, int rowRange_start, int rowRange_end)
 	{
 		Range rowRange(rowRange_start, rowRange_end);
@@ -301,7 +301,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1adjustROI
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1adjustROI
 		(Mat* self, int dtop, int dbottom, int dleft, int dright)
 	{
 
@@ -337,7 +337,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1assignTo__JJI
+	JNIEXPORT void opencvunity_core_Mat_n_1assignTo__JJI
 		(Mat* self, long m_nativeObj, int type)
 	{
 		Mat* me = (Mat*)self; //TODO: check for NULL
@@ -365,7 +365,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1assignTo__JJ
+	JNIEXPORT void opencvunity_core_Mat_n_1assignTo__JJ
 		(Mat* self, Mat* m_nativeObj)
 	{
 		Mat* me = (Mat*)self; //TODO: check for NULL
@@ -400,7 +400,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_n_1channels
+	JNIEXPORT int opencvunity_core_Mat_n_1channels
 		(Mat* self)
 	{
 		Mat* me = (Mat*)self; //TODO: check for NULL
@@ -436,7 +436,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT int core_Mat_n_1checkVector__JIIZ
+	JNIEXPORT int opencvunity_core_Mat_n_1checkVector__JIIZ
 		(Mat* self, int elemChannels, int depth, bool requireContinuous)
 	{
 		Mat* me = (Mat*)self; //TODO: check for NULL
@@ -468,7 +468,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT int core_Mat_n_1checkVector__JII
+	JNIEXPORT int opencvunity_core_Mat_n_1checkVector__JII
 		(Mat* self, int elemChannels, int depth)
 	{
 
@@ -501,7 +501,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_n_1checkVector__JI
+	JNIEXPORT int opencvunity_core_Mat_n_1checkVector__JI
 		(Mat* self, int elemChannels)
 	{
 
@@ -540,7 +540,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1clone
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1clone
 		(Mat* self)
 	{
 
@@ -579,7 +579,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1col
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1col
 		(Mat* self, int x)
 	{
 
@@ -618,7 +618,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1colRange
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1colRange
 		(Mat* self, int startcol, int endcol)
 	{
 
@@ -656,7 +656,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_n_1dims
+	JNIEXPORT int opencvunity_core_Mat_n_1dims
 		(Mat* self)
 	{
 
@@ -694,7 +694,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT int core_Mat_n_1cols
+	JNIEXPORT int opencvunity_core_Mat_n_1cols
 		(Mat* self)
 	{
 
@@ -730,7 +730,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT void core_Mat_n_1convertTo__JJIDD
+	JNIEXPORT void opencvunity_core_Mat_n_1convertTo__JJIDD
 		(Mat* self, Mat* m_nativeObj, int rtype, double alpha, double beta)
 	{
 
@@ -762,7 +762,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1convertTo__JJID
+	JNIEXPORT void opencvunity_core_Mat_n_1convertTo__JJID
 		(Mat* self, Mat* m_nativeObj, int rtype, double alpha)
 	{
 
@@ -794,7 +794,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1convertTo__JJI
+	JNIEXPORT void opencvunity_core_Mat_n_1convertTo__JJI
 		(Mat* self, Mat* m_nativeObj, int rtype)
 	{
 
@@ -831,7 +831,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1copyTo__JJ
+	JNIEXPORT void opencvunity_core_Mat_n_1copyTo__JJ
 		(Mat* self, Mat* m_nativeObj)
 	{
 
@@ -869,7 +869,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1copyTo__JJJ
+	JNIEXPORT void opencvunity_core_Mat_n_1copyTo__JJJ
 		(Mat* self, Mat* m_nativeObj, Mat* mask_nativeObj)
 	{
 
@@ -906,7 +906,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1create__JIII
+	JNIEXPORT void opencvunity_core_Mat_n_1create__JIII
 		(Mat* self, int rows, int cols, int type)
 	{
 
@@ -942,7 +942,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1create__JDDI
+	JNIEXPORT void opencvunity_core_Mat_n_1create__JDDI
 		(Mat* self, double size_width, double size_height, int type)
 	{
 
@@ -983,7 +983,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1cross
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1cross
 		(Mat* self, Mat* m_nativeObj)
 	{
 
@@ -1011,7 +1011,7 @@ extern "C" {
 		return (jlong)me->data;
 	}
 
-	JNIEXPORT unsigned char* core_Mat_n_1dataAddr
+	JNIEXPORT unsigned char* opencvunity_core_Mat_n_1dataAddr
 		(Mat* self)
 	{
 
@@ -1047,7 +1047,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_n_1depth
+	JNIEXPORT int opencvunity_core_Mat_n_1depth
 		(Mat* self)
 	{
 
@@ -1085,7 +1085,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1diag__JI
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1diag__JI
 		(Mat* self, int d)
 	{
 
@@ -1124,7 +1124,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1diag__J
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1diag__J
 		(Mat* d_nativeObj)
 	{
 		Mat _retval_ = Mat::diag((*(Mat*)d_nativeObj));
@@ -1162,7 +1162,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT double core_Mat_n_1dot
+	JNIEXPORT double opencvunity_core_Mat_n_1dot
 		(Mat* self, Mat* m_nativeObj)
 	{
 
@@ -1201,7 +1201,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT unsigned int* core_Mat_n_1elemSize
+	JNIEXPORT unsigned int* opencvunity_core_Mat_n_1elemSize
 		(Mat* self)
 	{
 
@@ -1239,7 +1239,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT unsigned int* core_Mat_n_1elemSize1
+	JNIEXPORT unsigned int* opencvunity_core_Mat_n_1elemSize1
 		(Mat* self)
 	{
 
@@ -1276,7 +1276,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT bool core_Mat_n_1empty
+	JNIEXPORT bool opencvunity_core_Mat_n_1empty
 		(Mat* self)
 	{
 
@@ -1314,7 +1314,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1eye__III
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1eye__III
 		(int rows, int cols, int type)
 	{
 
@@ -1353,7 +1353,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1eye__DDI
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1eye__DDI
 		(double size_width, double size_height, int type)
 	{
 
@@ -1392,7 +1392,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1inv__JI
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1inv__JI
 		(Mat* self, int method)
 	{
 
@@ -1427,7 +1427,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1inv__J
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1inv__J
 		(Mat* self)
 	{
 
@@ -1466,7 +1466,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT bool core_Mat_n_1isContinuous
+	JNIEXPORT bool opencvunity_core_Mat_n_1isContinuous
 		(Mat* self)
 	{
 
@@ -1503,7 +1503,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT bool core_Mat_n_1isSubmatrix
+	JNIEXPORT bool opencvunity_core_Mat_n_1isSubmatrix
 		(Mat* self)
 	{
 
@@ -1542,7 +1542,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT void core_Mat_locateROI_10
+	JNIEXPORT void opencvunity_core_Mat_locateROI_10
 		(Mat* self, double* wholeSize_out, double* ofs_out)
 	{
 
@@ -1587,7 +1587,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1mul__JJD
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1mul__JJD
 		(Mat* self, Mat* m_nativeObj, double scale)
 	{
 
@@ -1624,7 +1624,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1mul__JJ
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1mul__JJ
 		(Mat* self, Mat* m_nativeObj)
 	{
 
@@ -1663,7 +1663,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1ones__III
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1ones__III
 		(int rows, int cols, int type)
 	{
 
@@ -1701,7 +1701,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1ones__DDI
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1ones__DDI
 		(double size_width, double size_height, int type)
 	{
 
@@ -1737,7 +1737,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1push_1back
+	JNIEXPORT void opencvunity_core_Mat_n_1push_1back
 		(Mat* self, Mat* m_nativeObj)
 	{
 
@@ -1772,7 +1772,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1release
+	JNIEXPORT void opencvunity_core_Mat_n_1release
 		(Mat* self)
 	{
 		Mat* me = (Mat*)self; //TODO: check for NULL
@@ -1809,7 +1809,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1reshape__JII
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1reshape__JII
 		(Mat* self, int cn, int rows)
 	{
 
@@ -1844,7 +1844,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1reshape__JI
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1reshape__JI
 		(Mat* self, int cn)
 	{
 		Mat* me = (Mat*)self; //TODO: check for NULL
@@ -1882,7 +1882,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1row
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1row
 		(Mat* self, int y)
 	{
 		Mat* me = (Mat*)self; //TODO: check for NULL
@@ -1920,7 +1920,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1rowRange
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1rowRange
 		(Mat* self, int startrow, int endrow)
 	{
 		Mat* me = (Mat*)self; //TODO: check for NULL
@@ -1956,7 +1956,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_n_1rows
+	JNIEXPORT int opencvunity_core_Mat_n_1rows
 		(Mat* self)
 	{
 
@@ -1995,7 +1995,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1setTo__JDDDD
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1setTo__JDDDD
 		(Mat* self, double s_val0, double s_val1, double s_val2, double s_val3)
 	{
 
@@ -2036,7 +2036,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1setTo__JDDDDJ
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1setTo__JDDDDJ
 		(Mat* self, double s_val0, double s_val1, double s_val2, double s_val3, Mat* mask_nativeObj)
 	{
 
@@ -2079,7 +2079,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1setTo__JJJ
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1setTo__JJJ
 		(Mat* self, Mat* value_nativeObj, Mat* mask_nativeObj)
 	{
 
@@ -2116,7 +2116,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1setTo__JJ
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1setTo__JJ
 		(Mat* self, Mat* value_nativeObj)
 	{
 
@@ -2159,7 +2159,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT void core_Mat_n_1size
+	JNIEXPORT void opencvunity_core_Mat_n_1size
 		(Mat* self, double* vals)
 	{
 
@@ -2198,7 +2198,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT long core_Mat_n_1step1__JI
+	JNIEXPORT long opencvunity_core_Mat_n_1step1__JI
 		(Mat* self, int i)
 	{
 
@@ -2232,7 +2232,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT long core_Mat_n_1step1__J
+	JNIEXPORT long opencvunity_core_Mat_n_1step1__J
 		(Mat* self)
 	{
 
@@ -2269,7 +2269,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1submat_1rr
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1submat_1rr
 		(Mat* self, int rowRange_start, int rowRange_end, int colRange_start, int colRange_end)
 	{
 
@@ -2311,7 +2311,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1submat
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1submat
 		(Mat* self, int roi_x, int roi_y, int roi_width, int roi_height)
 	{
 
@@ -2352,7 +2352,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1t
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1t
 		(Mat* self)
 	{
 
@@ -2388,7 +2388,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT long core_Mat_n_1total
+	JNIEXPORT long opencvunity_core_Mat_n_1total
 		(Mat* self)
 	{
 
@@ -2426,7 +2426,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_n_1type
+	JNIEXPORT int opencvunity_core_Mat_n_1type
 		(Mat* self)
 	{
 
@@ -2464,7 +2464,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1zeros__III
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1zeros__III
 		(int rows, int cols, int type)
 	{
 
@@ -2502,7 +2502,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1zeros__DDI
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1zeros__DDI
 		(double size_width, double size_height, int type)
 	{
 
@@ -2527,7 +2527,7 @@ extern "C" {
 		delete (Mat*)self;
 	}
 
-	JNIEXPORT void core_Mat_n_1delete
+	JNIEXPORT void opencvunity_core_Mat_n_1delete
 		(Mat* self)
 	{
 		delete (Mat*)self;
@@ -2596,7 +2596,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT int core_Mat_nPutD
+	JNIEXPORT int opencvunity_core_Mat_nPutD
 		(Mat* self, int row, int col, int count, double* vals)
 	{
 
@@ -2709,7 +2709,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT int core_Mat_nPutB
+	JNIEXPORT int opencvunity_core_Mat_nPutB
 		(Mat* self, int row, int col, int count, char* vals)
 	{
 
@@ -2754,7 +2754,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_nPutS
+	JNIEXPORT int opencvunity_core_Mat_nPutS
 		(Mat* self, int row, int col, int count, short* vals)
 	{
 
@@ -2800,7 +2800,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT int core_Mat_nPutI
+	JNIEXPORT int opencvunity_core_Mat_nPutI
 		(Mat* self, int row, int col, int count, int* vals)
 	{
 
@@ -2844,7 +2844,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_nPutF
+	JNIEXPORT int opencvunity_core_Mat_nPutF
 		(Mat* self, int row, int col, int count, float* vals)
 	{
 
@@ -2924,7 +2924,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_nGetB
+	JNIEXPORT int opencvunity_core_Mat_nGetB
 		(Mat* self, int row, int col, int count, char* vals)
 	{
 
@@ -2969,7 +2969,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_nGetS
+	JNIEXPORT int opencvunity_core_Mat_nGetS
 		(Mat* self, int row, int col, int count, short* vals)
 	{
 
@@ -3013,7 +3013,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_nGetI
+	JNIEXPORT int opencvunity_core_Mat_nGetI
 		(Mat* self, int row, int col, int count, int* vals)
 	{
 
@@ -3057,7 +3057,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_nGetF
+	JNIEXPORT int opencvunity_core_Mat_nGetF
 		(Mat* self, int row, int col, int count, float* vals)
 	{
 
@@ -3102,7 +3102,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_nGetD
+	JNIEXPORT int opencvunity_core_Mat_nGetD
 		(Mat* self, int row, int col, int count, double* vals)
 	{
 
@@ -3158,7 +3158,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_nGet(Mat* self, int row, int col, int count, double* vals)
+	JNIEXPORT int opencvunity_core_Mat_nGet(Mat* self, int row, int col, int count, double* vals)
 	{
 		if (!self) return 0; // no native object behind
 		if (self->rows <= row || self->cols <= col) return 0; // indexes out of range

@@ -133,6 +133,7 @@ glob_more_specific_sources(AIDL "${CMAKE_CURRENT_SOURCE_DIR}/generator" handwrit
 set(opencv_public_headers "")
 set(generated_cpp_sources "")
 set(generated_java_sources "")
+set(generated_csharp_sources "")
 foreach(module ${OPENCV_JAVA_MODULES})
   set(module_java_dir "${OPENCV_MODULE_opencv_${module}_LOCATION}/misc/java")
   set(custom_header_list "${module_java_dir}/filelist")
@@ -167,8 +168,11 @@ foreach(module ${OPENCV_JAVA_MODULES})
                   WORKING_DIRECTORY "${probe_dir}"
                   OUTPUT_QUIET ERROR_QUIET)
   file(GLOB_RECURSE generated_java_sources_${module} RELATIVE "${probe_dir}" "${probe_dir}/*.java")
+  file(GLOB_RECURSE generated_csharp_sources_${module} RELATIVE "${probe_dir}" "${probe_dir}/*.cs")
   ocv_list_add_prefix(generated_java_sources_${module} "${CMAKE_CURRENT_BINARY_DIR}/")
+  ocv_list_add_prefix(generated_csharp_sources_${module} "${CMAKE_CURRENT_BINARY_DIR}/")
   list(APPEND generated_java_sources ${generated_java_sources_${module}})
+  list(APPEND generated_csharp_sources ${generated_csharp_sources_${module}})
 endforeach()
 
 file(REMOVE_RECURSE "${probe_dir}")
@@ -195,12 +199,18 @@ foreach(module ${OPENCV_JAVA_MODULES})
                      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
                      DEPENDS "${scripts_gen_java}" "${scripts_hdr_parser}" ${opencv_public_headers_${module}}
                     )
+  add_custom_command(OUTPUT ${generated_csharp_sources_${module}} "${CMAKE_CURRENT_BINARY_DIR}/${module}.cpp"
+                     COMMAND ${PYTHON_DEFAULT_EXECUTABLE} "${scripts_gen_java}" "${scripts_hdr_parser}" ${module} ${opencv_public_headers_${module}}
+                     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+                     DEPENDS "${scripts_gen_java}" "${scripts_hdr_parser}" ${opencv_public_headers_${module}}
+                    )
 endforeach()
 
 # step 2: TODO: generate documentation somewhere
 
 # step 3: copy files to destination
 set(step3_input_files ${generated_java_sources} ${handwritten_java_sources} ${handwritten_aidl_sources})
+set(step3_input_filesbis ${generated_csharp_sources} ${handwritten_java_sources} ${handwritten_aidl_sources})
 set(copied_files "")
 foreach(java_file ${step3_input_files})
   get_filename_component(java_file_name "${java_file}" NAME)
@@ -211,6 +221,25 @@ foreach(java_file ${step3_input_files})
                      COMMAND ${CMAKE_COMMAND} -E copy "${java_file}" "${output_name}"
                      MAIN_DEPENDENCY "${java_file}"
                      DEPENDS ${step1_depends} ${generated_java_sources} ${handwritten_java_sources}
+                     COMMENT "Generating src/org/opencv/${java_file_name}"
+                    )
+  list(APPEND copied_files "${output_name}")
+
+  if(ANDROID)
+    get_filename_component(install_subdir "${java_file_name}" PATH)
+    install(FILES "${output_name}" DESTINATION "${JAVA_INSTALL_ROOT}/src/org/opencv/${install_subdir}" COMPONENT java)
+  endif()
+endforeach()
+
+foreach(java_file ${step3_input_filesbis})
+  get_filename_component(java_file_name "${java_file}" NAME)
+  string(REPLACE "-jdoc.java" ".java" java_file_name "${java_file_name}")
+  string(REPLACE "+" "/" java_file_name "${java_file_name}")
+  set(output_name "${OpenCV_BINARY_DIR}/src_csharp/org/opencv/${java_file_name}")
+  add_custom_command(OUTPUT "${output_name}"
+                     COMMAND ${CMAKE_COMMAND} -E copy "${java_file}" "${output_name}"
+                     MAIN_DEPENDENCY "${java_file}"
+                     DEPENDS ${step1_depends} ${generated_csharp_sources} ${handwritten_java_sources}
                      COMMENT "Generating src/org/opencv/${java_file_name}"
                     )
   list(APPEND copied_files "${output_name}")

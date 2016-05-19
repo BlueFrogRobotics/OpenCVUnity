@@ -175,7 +175,10 @@ missing_consts = \
 
 }
 
-
+type_dict_ref = {
+    "__int64" : { "j_type" : "long", "jn_type" : "long", "jni_type" : "jlong", "suffix" : "J" , "csharp_type" : "Mat*", "csharpn_type" : "IntPtr"},
+    }
+ 
 # c_type    : { java/jni correspondence }
 type_dict = {
 # "simple"  : { j_type : "?", jn_type : "?", jni_type : "?", suffix : "?" },
@@ -652,15 +655,39 @@ T_CSHARP_START_INHERITED = """
 //
 // This file is auto-generated. Please don't modify it!
 //
-package org.opencv.$module;
+using System;
+using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
-$imports
+namespace OpenCVForUnity
+{
 
 // C++: class $name
 //javadoc: $name
-public class $jname extends $base {
+public class $jname : $base {
 
-    protected $jname(long addr) { super(addr); }
+        protected override void Dispose (bool disposing)
+		{
+					
+			try {
+				
+				if (disposing) {
+				}
+				
+				if (IsEnabledDispose) {
+					if (nativeObj != IntPtr.Zero)
+						${module}_${jname}_delete (nativeObj);
+					nativeObj = IntPtr.Zero;
+				}
+				
+			} finally {
+				base.Dispose (disposing);
+			}
+
+		}
+		
+		protected $jname(IntPtr addr) { nativeObj = addr; }
+
 
 """
 
@@ -670,6 +697,11 @@ T_CSHARP_START_ORPHAN = """
 //
 using System;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
+
+namespace OpenCVForUnity
+{
+
 
 // C++: class $name
 //javadoc: $name
@@ -705,6 +737,10 @@ T_CSHARP_START_MODULE = """
 using System;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
+
+namespace OpenCVForUnity
+{
+
 
 public class $jname {
 """
@@ -945,7 +981,7 @@ class ClassInfo(GeneralInfo):
 		
     def generateCSharpCode(self, m, M):
         return Template(self.csharp_code.getvalue() + "\n\n" + \
-                         self.csharpn_code.getvalue() + "\n}\n").substitute(\
+                         self.csharpn_code.getvalue() + "\n}\n}\n").substitute(\
                             module = m,
                             name = self.name,
                             jname = self.jname,
@@ -1255,15 +1291,34 @@ class JavaWrapperGenerator(object):
                     ("double _da_retval_ [%(cnt)i]= {%(args)s}; " +
                      "vals = _da_retval_;") %
                     { "cnt" : len(fields), "args" : ", ".join(["(double)_retval_" + f[1] for f in fields]) } )
+                type_dict_ref[ "__int64"] = type_dict[ "__int64"]
             if fi.classname and fi.ctype and not fi.static: # non-static class method except c-tor
                 # adding 'self'
                 jn_args.append ( ArgInfo([ "__int64", "nativeObj", "", [], "" ]) )
                 jni_args.append( ArgInfo([ "__int64", "self", "", [], "" ]) )
-                jni_args1.append( ArgInfo([ "__int64", "self", "", [], "" ]) )
-            ci.addImports(fi.ctype)
+                if not fi.ctype: # c-tor
+                   jni_args1.append( ArgInfo([ "__int64", "self", "", [], "" ]) )
+                elif fi.static:
+                   jni_args1.append( ArgInfo([ "__int64", "self", "", [], "" ]) )
+                else:  
+                    if fi.ctype.startswith('Ptr_'):
+                        type_dict[ "__int64"] = \
+            { "j_type" : "long",
+              "jn_type" : "long", "jn_args" : "jlong",
+              "jni_name" : fi.fullClass(isCPP=True), "jni_type" : "jlong",
+              "suffix" : "J" , "csharp_type" : "Ptr<"+fi.fullClass(isCPP=True)+">", "csharpn_type" : "IntPtr", "csharp_var" : type_dict[fi.ctype].get("csharp_var", "double[]"),"jni_var" :  type_dict[fi.ctype].get("jn_var", "double[]")}				
+                        jni_args1.append( ArgInfo(["__int64", "self", "", [], "" ]) )
+                    else:
+                        type_dict[ "__int64"] = \
+            { "j_type" : "long",
+              "jn_type" : "long", "jn_args" : "jlong",
+              "jni_name" : fi.fullClass(isCPP=True), "jni_type" : "jlong",
+              "suffix" : "J" , "csharp_type" : fi.fullClass(isCPP=True)+"*", "csharpn_type" : "IntPtr", "csharp_var" : type_dict[fi.ctype].get("csharp_var", "double[]"),"jni_var" :  type_dict[fi.ctype].get("jn_var", "double[]")}				
+                        jni_args1.append( ArgInfo(["__int64", "self", "", [], "" ]) )				
+            ci.addImports(fi.ctype)				
             for a in args:
                 if not a.ctype: # hidden
-                    continue
+                    continue	
                 ci.addImports(a.ctype)
                 if "vector" in a.ctype: # pass as Mat
                     jn_args.append  ( ArgInfo([ "__int64", "%s_mat.nativeObj" % a.name, "", [], "" ]) )
@@ -1299,6 +1354,24 @@ class JavaWrapperGenerator(object):
                     fields = type_dict[a.ctype].get("jn_args", ((a.ctype, ""),))
                     if "I" in a.out or not a.out or self.isWrapped(a.ctype): # input arg, pass by primitive fields
                         for f in fields:
+                            if fi.fullClass(isCPP=True) == "cv":
+                                type_dict[ "__int64"] = \
+            { "j_type" : "long",
+              "jn_type" : "long", "jn_args" : "jlong",
+              "jni_name" : fi.fullClass(isCPP=True), "jni_type" : "jlong",
+              "suffix" : "J" , "csharp_type" : "Mat*", "csharpn_type" : "IntPtr", "csharp_var" : type_dict[fi.ctype].get("csharp_var", "double[]"),"jni_var" :  type_dict[fi.ctype].get("jn_var", "double[]")}
+                            elif fi.fullClass(isCPP=True) == "cv::fisheye":
+                                type_dict[ "__int64"] = \
+            { "j_type" : "long",
+              "jn_type" : "long", "jn_args" : "jlong",
+              "jni_name" : fi.fullClass(isCPP=True), "jni_type" : "jlong",
+              "suffix" : "J" , "csharp_type" : "Mat*", "csharpn_type" : "IntPtr", "csharp_var" : type_dict[fi.ctype].get("csharp_var", "double[]"),"jni_var" :  type_dict[fi.ctype].get("jn_var", "double[]")}
+                            else:
+                                type_dict[ "__int64"] = \
+            { "j_type" : "long",
+              "jn_type" : "long", "jn_args" : "jlong",
+              "jni_name" : fi.fullClass(isCPP=True), "jni_type" : "jlong",
+              "suffix" : "J" , "csharp_type" : fi.fullClass(isCPP=True)+"*", "csharpn_type" : "IntPtr", "csharp_var" : type_dict[fi.ctype].get("csharp_var", "double[]"),"jni_var" :  type_dict[fi.ctype].get("jn_var", "double[]")}
                             jn_args.append ( ArgInfo([ f[0], a.name + f[1], "", [], "" ]) )
                             jni_args.append( ArgInfo([ f[0], a.name + f[1].replace(".","_").replace("[","").replace("]",""), "", [], "" ]) )
                             jni_args1.append( ArgInfo([ f[0], a.name + f[1].replace(".","_").replace("[","").replace("]",""), "", [], "" ]) )
@@ -1495,7 +1568,7 @@ class JavaWrapperGenerator(object):
                 c_prologue.append("typedef Ptr<%s> %s;" % (self.fullTypeName(fi.ctype[4:]), fi.ctype))
                 c_prologue1.append("typedef Ptr<%s> %s;" % (self.fullTypeName(fi.ctype[4:]), fi.ctype))
                 ret = "return (jlong)(new %(ctype)s(_retval_));" % { 'ctype':fi.ctype } 
-                ret1 = "return ;"
+                ret1 = "return (new %(ctype)s(_retval_));" % { 'ctype':fi.ctype }
             elif self.isWrapped(ret_type): # pointer to wrapped class:
                 ret = "return (jlong) _retval_;"
                 ret1 = "return _retval_;"
@@ -1512,6 +1585,7 @@ class JavaWrapperGenerator(object):
                     name = prop_name + ";//"
 
             cvname = fi.fullName(isCPP=True)
+            cvname1 = fi.fullName(isCPP=True)			
             retval = self.fullTypeName(fi.ctype) + " _retval_ = "
             if fi.ctype == "void":
                 retval = ""
@@ -1527,10 +1601,13 @@ class JavaWrapperGenerator(object):
                 if not fi.ctype: # c-tor
                     retval = fi.fullClass(isCPP=True) + "* _retval_ = "
                     cvname = "new " + fi.fullClass(isCPP=True)
+                    cvname1 = "new " + fi.fullClass(isCPP=True)					
                 elif fi.static:
                     cvname = fi.fullName(isCPP=True)
+                    cvname1 = fi.fullName(isCPP=True)					
                 else:
                     cvname = ("me->" if  not self.isSmartClass(fi.classname) else "(*me)->") + name
+                    cvname1 = ("me->" if  not self.isSmartClass(fi.classname) else "(*me)->") + name					
                     c_prologue.append(\
                         "%(cls)s* me = (%(cls)s*) self; //TODO: check for NULL" \
                             % { "cls" : self.smartWrap(fi.classname, fi.fullClass(isCPP=True))} \
@@ -1565,6 +1642,10 @@ class JavaWrapperGenerator(object):
 			    rtype1 = fi.fullClass(isCPP=True) + "*"
             else:
                 rtype1 = type_dict[fi.ctype].get("csharp_type", "void")
+				
+            if fi.ctype.startswith('Ptr_'):
+                rtype1 = "Ptr<"+self.fullTypeName(fi.ctype[4:])+">*"
+                default1 = "return 0;"
                 
             if rtype1 == "void":
                 default1 = "return;"
@@ -1595,12 +1676,12 @@ JNIEXPORT $rtype JNICALL Java_org_opencv_${module}_${clazz}_$fname
 }
 
 
-JNIEXPORT $rtype1 ${module}_${clazz}_$fname
+JNIEXPORT $rtype1 opencvunity_${module}_${clazz}_$fname
   ($args1)
 {
  try {
         $prologue1
-        $retval$cvname( $cvargs );
+        $retval$cvname1( $cvargs );
         $epilogue1$ret1
 		 } catch(const std::exception &e) {
        
@@ -1609,6 +1690,7 @@ JNIEXPORT $rtype1 ${module}_${clazz}_$fname
     }
 	$default1
 }
+
 
 
 """ ).substitute( \
@@ -1626,6 +1708,7 @@ JNIEXPORT $rtype1 ${module}_${clazz}_$fname
         epilogue1 = "  ".join(c_epilogue1) + ("\n        " if c_epilogue1 else ""), \
         ret = ret, \
         ret1 = ret1, \
+        cvname1 = cvname1, \
         cvname = cvname, \
         cvargs = ", ".join(cvargs), \
         default = default, \
@@ -1659,6 +1742,10 @@ JNIEXPORT $rtype1 ${module}_${clazz}_$fname
     public static final int
             %s;\n\n""" % (",\n"+" "*12).join(["%s = %s" % (c.name, c.value) for c in ci.consts])
             )
+            ci.csharp_code.write("""
+    public const int
+            %s;\n\n""" % (",\n"+" "*12).join(["%s = %s" % (c.name, c.value) for c in ci.consts])
+            )
         # methods
         for fi in ci.getAllMethods():
             self.gen_func(ci, fi)
@@ -1681,6 +1768,7 @@ JNIEXPORT $rtype1 ${module}_${clazz}_$fname
                 ci.jn_code.write( ManualFuncs[ci.name][func]["jn_code"] )
                 ci.cpp_code.write( ManualFuncs[ci.name][func]["cpp_code"] )
                 ci.csharp_code.write( ManualFuncs[ci.name][func]["cpp_code"] )
+                ci.csharpn_code.write( ManualFuncs[ci.name][func]["jn_code"] )
 
         if ci.name != self.Module:
             # finalize()
@@ -1696,6 +1784,13 @@ JNIEXPORT $rtype1 ${module}_${clazz}_$fname
 """
     // native support for java finalize()
     private static native void delete(long nativeObj);
+""" )
+
+            ci.csharpn_code.write('    [DllImport("opencv_java3", CallingConvention = CallingConvention.Cdecl)]\n');
+            ci.csharpn_code.write(
+"""
+    // native support for java finalize()
+    private static extern void delete(IntPtr nativeObj);
 """ )
 
             # native support for java finalize()
