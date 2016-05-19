@@ -1,4 +1,4 @@
-#include "opencv2\objdetect\qrcodereader.hpp"
+#include "opencv2\contrib\qrcodereader.hpp"
 
 namespace cv {
 
@@ -365,35 +365,35 @@ namespace cv {
 	}
 
 	// Sequences the corners wrt to the orientation of the QR Code
-	void updateCornerOr(int orientation, std::vector<Point2f> IN, std::vector<Point2f> &OUT)
+	void updateCornerOr(int orientation, std::vector<Point2f> iIN, std::vector<Point2f> &iOUT)
 	{
 		Point2f M0, M1, M2, M3;
 		if (orientation == CV_QR_NORTH) {
-			M0 = IN[0];
-			M1 = IN[1];
-			M2 = IN[2];
-			M3 = IN[3];
+			M0 = iIN[0];
+			M1 = iIN[1];
+			M2 = iIN[2];
+			M3 = iIN[3];
 		} else if (orientation == CV_QR_EAST) {
-			M0 = IN[1];
-			M1 = IN[2];
-			M2 = IN[3];
-			M3 = IN[0];
+			M0 = iIN[1];
+			M1 = iIN[2];
+			M2 = iIN[3];
+			M3 = iIN[0];
 		} else if (orientation == CV_QR_SOUTH) {
-			M0 = IN[2];
-			M1 = IN[3];
-			M2 = IN[0];
-			M3 = IN[1];
+			M0 = iIN[2];
+			M1 = iIN[3];
+			M2 = iIN[0];
+			M3 = iIN[1];
 		} else if (orientation == CV_QR_WEST) {
-			M0 = IN[3];
-			M1 = IN[0];
-			M2 = IN[1];
-			M3 = IN[2];
+			M0 = iIN[3];
+			M1 = iIN[0];
+			M2 = iIN[1];
+			M3 = iIN[2];
 		}
 
-		OUT.push_back(M0);
-		OUT.push_back(M1);
-		OUT.push_back(M2);
-		OUT.push_back(M3);
+		iOUT.push_back(M0);
+		iOUT.push_back(M1);
+		iOUT.push_back(M2);
+		iOUT.push_back(M3);
 	}
 
 	// Gets the Intersection Point of the lines formed by sets of two points

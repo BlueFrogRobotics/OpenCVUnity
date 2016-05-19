@@ -8,7 +8,7 @@
 #ifndef _OBJDETECT_LBPHFACE_H_
 #define _OBJDETECT_LBPHFACE_H_
 
-#include "opencv2\objdetect\face_basic.hpp"
+#include "face_basic.hpp"
 #include "opencv2/face.hpp"
 #include "opencv2/objdetect.hpp"
 #include "opencv2/imgproc.hpp"

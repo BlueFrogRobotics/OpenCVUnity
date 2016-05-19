@@ -41,7 +41,7 @@ and on any theory of liability, whether in contract, strict liability,
 or tort (including negligence or otherwise) arising in any way out of
 the use of this software, even if advised of the possibility of such damage.
 */
-#include "opencv2/objdetect/predict_collector.hpp"
+#include "opencv2/contrib/predict_collector.hpp"
 #include "opencv2/core/cvstd.hpp"
 #include <iterator>     // std::back_inserter
 namespace cv {

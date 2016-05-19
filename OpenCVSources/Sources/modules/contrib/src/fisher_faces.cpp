@@ -16,7 +16,7 @@
  *   See <http://www.opensource.org/licenses/bsd-license>
  */
 #include "precomp.hpp"
-#include "opencv2\objdetect\fisher_faces.hpp"
+#include "opencv2\contrib\fisher_faces.hpp"
 
 namespace cv {
 	namespace face {

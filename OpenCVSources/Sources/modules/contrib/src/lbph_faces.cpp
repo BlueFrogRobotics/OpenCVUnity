@@ -17,7 +17,7 @@
  */
 #include "precomp.hpp"
 #include "opencv2/face.hpp"
-#include "opencv2\objdetect\lbph_faces.hpp"
+#include "opencv2\contrib\lbph_faces.hpp"
 
 namespace cv {
 	namespace face {

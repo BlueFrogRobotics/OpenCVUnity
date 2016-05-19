@@ -48,7 +48,7 @@ the use of this software, even if advised of the possibility of such damage.
 */
 
 #include "opencv2/core.hpp"
-#include "objdetect\predict_collector.hpp"
+#include "contrib\predict_collector.hpp"
 #include <map>
 
 namespace cv { namespace face {
@@ -369,6 +369,6 @@ protected:
 
 }}
 
-#include "opencv2/objdetect/facerec.hpp"
+#include "opencv2/contrib/facerec.hpp"
 
 #endif

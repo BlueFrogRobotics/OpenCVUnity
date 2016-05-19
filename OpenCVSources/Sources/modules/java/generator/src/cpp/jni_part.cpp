@@ -11,7 +11,7 @@
 #endif
 
 #ifdef HAVE_OPENCV_CONTRIB
-#  include "opencv2/contrib.hpp"
+//#  include "opencv2/contrib.hpp"
 #endif
 
 extern "C" {
