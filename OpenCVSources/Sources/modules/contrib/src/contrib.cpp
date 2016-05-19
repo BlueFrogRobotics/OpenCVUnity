@@ -1,4 +1,5 @@
-#include "contrib.h"
+#include "opencv2/contrib.h"
+#include "C:\Users\Valentin\Documents\Repository\opencvUnity\OpenCVSources\Sources\modules\java\generator\src\cpp\converters.cpp"
 
 namespace cv {
 	

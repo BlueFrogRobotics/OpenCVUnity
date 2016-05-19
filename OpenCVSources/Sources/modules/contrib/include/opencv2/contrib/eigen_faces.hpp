@@ -1,7 +1,7 @@
 #ifndef _OBJDETECT_EIGENFACE_H_
 #define _OBJDETECT_EIGENFACE_H_
 
-#include "opencv2\objdetect\face_basic.hpp"
+#include "face_basic.hpp"
 
 namespace cv {
 	namespace face {

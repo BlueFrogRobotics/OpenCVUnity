@@ -39,8 +39,8 @@ the use of this software, even if advised of the possibility of such damage.
 #ifndef __OPENCV_TEXT_HPP__
 #define __OPENCV_TEXT_HPP__
 
-#include "opencv2/objdetect/erfilter.hpp"
-#include "opencv2/objdetect/ocr.hpp"
+#include "contrib/erfilter.hpp"
+#include "contrib/ocr.hpp"
 
 /** @defgroup text Scene Text Detection and Recognition
 

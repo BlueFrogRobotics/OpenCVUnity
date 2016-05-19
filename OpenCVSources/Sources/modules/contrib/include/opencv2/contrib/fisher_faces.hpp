@@ -6,7 +6,7 @@
 #ifndef _OBJDETECT_FISHERFACE_H_
 #define _OBJDETECT_FISHERFACE_H_
 
-#include "opencv2\objdetect\face_basic.hpp"
+#include "face_basic.hpp"
 
 namespace cv {
 	namespace face {

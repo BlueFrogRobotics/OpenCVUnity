@@ -1,4 +1,4 @@
-Doit être installés (pour windows x64) : 
+Doit être installés : 
 	- CMake (https://cmake.org/download/)
 	- Python 2.7.11 (https://www.python.org/downloads/)
 	- Visual Studio 2013 ou 2015

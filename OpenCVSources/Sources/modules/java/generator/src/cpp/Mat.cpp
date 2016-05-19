@@ -39,17 +39,17 @@ extern "C" {
 	//
 
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1Mat__
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1Mat__
 		(JNIEnv*, jclass);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1Mat__
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1Mat__
 		(JNIEnv*, jclass)
 	{
 		LOGD("Mat::n_1Mat__()");
 		return (jlong) new cv::Mat();
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1Mat__
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1Mat__
 		()
 	{
 		return new cv::Mat();
@@ -61,10 +61,10 @@ extern "C" {
 	//   Mat::Mat(int rows, int cols, int type)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1Mat__III
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1Mat__III
 		(JNIEnv* env, jclass, jint rows, jint cols, jint type);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1Mat__III
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1Mat__III
 		(JNIEnv* env, jclass, jint rows, jint cols, jint type)
 	{
 		static const char method_name[] = "Mat::n_1Mat__III()";
@@ -82,7 +82,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1Mat__III
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1Mat__III
 		(int rows, int cols, int type)
 	{
 		return new Mat(rows, cols, type);
@@ -94,10 +94,10 @@ extern "C" {
 	//   Mat::Mat(Size size, int type)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1Mat__DDI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1Mat__DDI
 		(JNIEnv* env, jclass, jdouble size_width, jdouble size_height, jint type);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1Mat__DDI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1Mat__DDI
 		(JNIEnv* env, jclass, jdouble size_width, jdouble size_height, jint type)
 	{
 		static const char method_name[] = "Mat::n_1Mat__DDI()";
@@ -117,7 +117,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1Mat__DDI
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1Mat__DDI
 		(double size_width, double size_height, int type)
 	{
 
@@ -132,11 +132,11 @@ extern "C" {
 	//   Mat::Mat(int rows, int cols, int type, Scalar s)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1Mat__IIIDDDD
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1Mat__IIIDDDD
 		(JNIEnv* env, jclass, jint rows, jint cols, jint type, jdouble s_val0, jdouble s_val1, jdouble s_val2, jdouble s_val3);
 
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1Mat__IIIDDDD
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1Mat__IIIDDDD
 		(JNIEnv* env, jclass, jint rows, jint cols, jint type, jdouble s_val0, jdouble s_val1, jdouble s_val2, jdouble s_val3)
 	{
 		static const char method_name[] = "Mat::n_1Mat__IIIDDDD()";
@@ -157,7 +157,7 @@ extern "C" {
 
 
 
-	JNIEXPORT Mat* core_Mat_n_1Mat__IIIDDDD
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1Mat__IIIDDDD
 		(int rows, int cols, int type, double s_val0, double s_val1, double s_val2, double s_val3)
 	{
 		Scalar s(s_val0, s_val1, s_val2, s_val3);
@@ -170,10 +170,10 @@ extern "C" {
 	//   Mat::Mat(Size size, int type, Scalar s)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1Mat__DDIDDDD
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1Mat__DDIDDDD
 		(JNIEnv* env, jclass, jdouble size_width, jdouble size_height, jint type, jdouble s_val0, jdouble s_val1, jdouble s_val2, jdouble s_val3);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1Mat__DDIDDDD
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1Mat__DDIDDDD
 		(JNIEnv* env, jclass, jdouble size_width, jdouble size_height, jint type, jdouble s_val0, jdouble s_val1, jdouble s_val2, jdouble s_val3)
 	{
 		static const char method_name[] = "Mat::n_1Mat__DDIDDDD()";
@@ -194,7 +194,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1Mat__DDIDDDD
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1Mat__DDIDDDD
 		(double size_width, double size_height, int type, double s_val0, double s_val1, double s_val2, double s_val3)
 	{
 
@@ -210,10 +210,10 @@ extern "C" {
 	//   Mat::Mat(Mat m, Range rowRange, Range colRange = Range::all())
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1Mat__JIIII
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1Mat__JIIII
 		(JNIEnv* env, jclass, jlong m_nativeObj, jint rowRange_start, jint rowRange_end, jint colRange_start, jint colRange_end);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1Mat__JIIII
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1Mat__JIIII
 		(JNIEnv* env, jclass, jlong m_nativeObj, jint rowRange_start, jint rowRange_end, jint colRange_start, jint colRange_end)
 	{
 		static const char method_name[] = "Mat::n_1Mat__JIIII()";
@@ -233,7 +233,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1Mat__JIIII
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1Mat__JIIII
 		(Mat* m_nativeObj, int rowRange_start, int rowRange_end, int colRange_start, int colRange_end)
 	{
 		Range rowRange(rowRange_start, rowRange_end);
@@ -242,11 +242,11 @@ extern "C" {
 	}
 
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1Mat__JII
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1Mat__JII
 		(JNIEnv* env, jclass, jlong m_nativeObj, jint rowRange_start, jint rowRange_end);
 
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1Mat__JII
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1Mat__JII
 		(JNIEnv* env, jclass, jlong m_nativeObj, jint rowRange_start, jint rowRange_end)
 	{
 		static const char method_name[] = "Mat::n_1Mat__JII()";
@@ -266,7 +266,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1Mat__JII
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1Mat__JII
 		(Mat* m_nativeObj, int rowRange_start, int rowRange_end)
 	{
 		Range rowRange(rowRange_start, rowRange_end);
@@ -277,10 +277,10 @@ extern "C" {
 	//  Mat Mat::adjustROI(int dtop, int dbottom, int dleft, int dright)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1adjustROI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1adjustROI
 		(JNIEnv* env, jclass, jlong self, jint dtop, jint dbottom, jint dleft, jint dright);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1adjustROI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1adjustROI
 		(JNIEnv* env, jclass, jlong self, jint dtop, jint dbottom, jint dleft, jint dright)
 	{
 		static const char method_name[] = "Mat::n_1adjustROI()";
@@ -301,7 +301,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1adjustROI
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1adjustROI
 		(Mat* self, int dtop, int dbottom, int dleft, int dright)
 	{
 
@@ -317,10 +317,10 @@ extern "C" {
 	//  void Mat::assignTo(Mat m, int type = -1)
 	//
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1assignTo__JJI
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1assignTo__JJI
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj, jint type);
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1assignTo__JJI
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1assignTo__JJI
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj, jint type)
 	{
 		static const char method_name[] = "Mat::n_1assignTo__JJI()";
@@ -337,7 +337,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1assignTo__JJI
+	JNIEXPORT void opencvunity_core_Mat_n_1assignTo__JJI
 		(Mat* self, long m_nativeObj, int type)
 	{
 		Mat* me = (Mat*)self; //TODO: check for NULL
@@ -345,10 +345,10 @@ extern "C" {
 	}
 
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1assignTo__JJ
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1assignTo__JJ
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj);
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1assignTo__JJ
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1assignTo__JJ
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj)
 	{
 		static const char method_name[] = "Mat::n_1assignTo__JJ()";
@@ -365,7 +365,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1assignTo__JJ
+	JNIEXPORT void opencvunity_core_Mat_n_1assignTo__JJ
 		(Mat* self, Mat* m_nativeObj)
 	{
 		Mat* me = (Mat*)self; //TODO: check for NULL
@@ -378,10 +378,10 @@ extern "C" {
 	//  int Mat::channels()
 	//
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1channels
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1channels
 		(JNIEnv* env, jclass, jlong self);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1channels
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1channels
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1channels()";
@@ -400,7 +400,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_n_1channels
+	JNIEXPORT int opencvunity_core_Mat_n_1channels
 		(Mat* self)
 	{
 		Mat* me = (Mat*)self; //TODO: check for NULL
@@ -413,10 +413,10 @@ extern "C" {
 	//  int Mat::checkVector(int elemChannels, int depth = -1, bool requireContinuous = true)
 	//
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1checkVector__JIIZ
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1checkVector__JIIZ
 		(JNIEnv* env, jclass, jlong self, jint elemChannels, jint depth, jboolean requireContinuous);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1checkVector__JIIZ
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1checkVector__JIIZ
 		(JNIEnv* env, jclass, jlong self, jint elemChannels, jint depth, jboolean requireContinuous)
 	{
 		static const char method_name[] = "Mat::n_1checkVector__JIIZ()";
@@ -436,7 +436,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT int core_Mat_n_1checkVector__JIIZ
+	JNIEXPORT int opencvunity_core_Mat_n_1checkVector__JIIZ
 		(Mat* self, int elemChannels, int depth, bool requireContinuous)
 	{
 		Mat* me = (Mat*)self; //TODO: check for NULL
@@ -445,10 +445,10 @@ extern "C" {
 
 
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1checkVector__JII
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1checkVector__JII
 		(JNIEnv* env, jclass, jlong self, jint elemChannels, jint depth);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1checkVector__JII
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1checkVector__JII
 		(JNIEnv* env, jclass, jlong self, jint elemChannels, jint depth)
 	{
 		static const char method_name[] = "Mat::n_1checkVector__JII()";
@@ -468,7 +468,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT int core_Mat_n_1checkVector__JII
+	JNIEXPORT int opencvunity_core_Mat_n_1checkVector__JII
 		(Mat* self, int elemChannels, int depth)
 	{
 
@@ -478,11 +478,11 @@ extern "C" {
 	}
 
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1checkVector__JI
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1checkVector__JI
 		(JNIEnv* env, jclass, jlong self, jint elemChannels);
 
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1checkVector__JI
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1checkVector__JI
 		(JNIEnv* env, jclass, jlong self, jint elemChannels)
 	{
 		static const char method_name[] = "Mat::n_1checkVector__JI()";
@@ -501,7 +501,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_n_1checkVector__JI
+	JNIEXPORT int opencvunity_core_Mat_n_1checkVector__JI
 		(Mat* self, int elemChannels)
 	{
 
@@ -515,11 +515,11 @@ extern "C" {
 	//  Mat Mat::clone()
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1clone
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1clone
 		(JNIEnv* env, jclass, jlong self);
 
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1clone
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1clone
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1clone()";
@@ -540,7 +540,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1clone
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1clone
 		(Mat* self)
 	{
 
@@ -555,10 +555,10 @@ extern "C" {
 	//  Mat Mat::col(int x)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1col
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1col
 		(JNIEnv* env, jclass, jlong self, jint x);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1col
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1col
 		(JNIEnv* env, jclass, jlong self, jint x)
 	{
 		static const char method_name[] = "Mat::n_1col()";
@@ -579,7 +579,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1col
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1col
 		(Mat* self, int x)
 	{
 
@@ -595,10 +595,10 @@ extern "C" {
 	//  Mat Mat::colRange(int startcol, int endcol)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1colRange
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1colRange
 		(JNIEnv* env, jclass, jlong self, jint startcol, jint endcol);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1colRange
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1colRange
 		(JNIEnv* env, jclass, jlong self, jint startcol, jint endcol)
 	{
 		static const char method_name[] = "Mat::n_1colRange()";
@@ -618,7 +618,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1colRange
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1colRange
 		(Mat* self, int startcol, int endcol)
 	{
 
@@ -634,10 +634,10 @@ extern "C" {
 	//  int Mat::dims()
 	//
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1dims
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1dims
 		(JNIEnv* env, jclass, jlong self);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1dims
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1dims
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1dims()";
@@ -656,7 +656,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_n_1dims
+	JNIEXPORT int opencvunity_core_Mat_n_1dims
 		(Mat* self)
 	{
 
@@ -671,10 +671,10 @@ extern "C" {
 	//  int Mat::cols()
 	//
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1cols
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1cols
 		(JNIEnv* env, jclass, jlong self);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1cols
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1cols
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1cols()";
@@ -694,7 +694,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT int core_Mat_n_1cols
+	JNIEXPORT int opencvunity_core_Mat_n_1cols
 		(Mat* self)
 	{
 
@@ -708,10 +708,10 @@ extern "C" {
 	//  void Mat::convertTo(Mat& m, int rtype, double alpha = 1, double beta = 0)
 	//
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1convertTo__JJIDD
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1convertTo__JJIDD
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj, jint rtype, jdouble alpha, jdouble beta);
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1convertTo__JJIDD
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1convertTo__JJIDD
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj, jint rtype, jdouble alpha, jdouble beta)
 	{
 		static const char method_name[] = "Mat::n_1convertTo__JJIDD()";
@@ -730,7 +730,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT void core_Mat_n_1convertTo__JJIDD
+	JNIEXPORT void opencvunity_core_Mat_n_1convertTo__JJIDD
 		(Mat* self, Mat* m_nativeObj, int rtype, double alpha, double beta)
 	{
 
@@ -741,10 +741,10 @@ extern "C" {
 	}
 
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1convertTo__JJID
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1convertTo__JJID
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj, jint rtype, jdouble alpha);
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1convertTo__JJID
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1convertTo__JJID
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj, jint rtype, jdouble alpha)
 	{
 		static const char method_name[] = "Mat::n_1convertTo__JJID()";
@@ -762,7 +762,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1convertTo__JJID
+	JNIEXPORT void opencvunity_core_Mat_n_1convertTo__JJID
 		(Mat* self, Mat* m_nativeObj, int rtype, double alpha)
 	{
 
@@ -773,10 +773,10 @@ extern "C" {
 	}
 
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1convertTo__JJI
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1convertTo__JJI
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj, jint rtype);
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1convertTo__JJI
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1convertTo__JJI
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj, jint rtype)
 	{
 		static const char method_name[] = "Mat::n_1convertTo__JJI()";
@@ -794,7 +794,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1convertTo__JJI
+	JNIEXPORT void opencvunity_core_Mat_n_1convertTo__JJI
 		(Mat* self, Mat* m_nativeObj, int rtype)
 	{
 
@@ -810,10 +810,10 @@ extern "C" {
 	//  void Mat::copyTo(Mat& m)
 	//
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1copyTo__JJ
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1copyTo__JJ
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj);
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1copyTo__JJ
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1copyTo__JJ
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj)
 	{
 		static const char method_name[] = "Mat::n_1copyTo__JJ()";
@@ -831,7 +831,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1copyTo__JJ
+	JNIEXPORT void opencvunity_core_Mat_n_1copyTo__JJ
 		(Mat* self, Mat* m_nativeObj)
 	{
 
@@ -847,10 +847,10 @@ extern "C" {
 	//  void Mat::copyTo(Mat& m, Mat mask)
 	//
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1copyTo__JJJ
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1copyTo__JJJ
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj, jlong mask_nativeObj);
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1copyTo__JJJ
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1copyTo__JJJ
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj, jlong mask_nativeObj)
 	{
 		static const char method_name[] = "Mat::n_1copyTo__JJJ()";
@@ -869,7 +869,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1copyTo__JJJ
+	JNIEXPORT void opencvunity_core_Mat_n_1copyTo__JJJ
 		(Mat* self, Mat* m_nativeObj, Mat* mask_nativeObj)
 	{
 
@@ -886,10 +886,10 @@ extern "C" {
 	//  void Mat::create(int rows, int cols, int type)
 	//
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1create__JIII
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1create__JIII
 		(JNIEnv* env, jclass, jlong self, jint rows, jint cols, jint type);
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1create__JIII
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1create__JIII
 		(JNIEnv* env, jclass, jlong self, jint rows, jint cols, jint type)
 	{
 		static const char method_name[] = "Mat::n_1create__JIII()";
@@ -906,7 +906,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1create__JIII
+	JNIEXPORT void opencvunity_core_Mat_n_1create__JIII
 		(Mat* self, int rows, int cols, int type)
 	{
 
@@ -921,10 +921,10 @@ extern "C" {
 	//  void Mat::create(Size size, int type)
 	//
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1create__JDDI
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1create__JDDI
 		(JNIEnv* env, jclass, jlong self, jdouble size_width, jdouble size_height, jint type);
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1create__JDDI
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1create__JDDI
 		(JNIEnv* env, jclass, jlong self, jdouble size_width, jdouble size_height, jint type)
 	{
 		static const char method_name[] = "Mat::n_1create__JDDI()";
@@ -942,7 +942,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1create__JDDI
+	JNIEXPORT void opencvunity_core_Mat_n_1create__JDDI
 		(Mat* self, double size_width, double size_height, int type)
 	{
 
@@ -958,10 +958,10 @@ extern "C" {
 	//  Mat Mat::cross(Mat m)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1cross
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1cross
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1cross
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1cross
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj)
 	{
 		static const char method_name[] = "Mat::n_1cross()";
@@ -983,7 +983,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1cross
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1cross
 		(Mat* self, Mat* m_nativeObj)
 	{
 
@@ -1000,10 +1000,10 @@ extern "C" {
 	//  long Mat::dataAddr()
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1dataAddr
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1dataAddr
 		(JNIEnv*, jclass, jlong self);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1dataAddr
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1dataAddr
 		(JNIEnv*, jclass, jlong self)
 	{
 		LOGD("Mat::n_1dataAddr()");
@@ -1011,7 +1011,7 @@ extern "C" {
 		return (jlong)me->data;
 	}
 
-	JNIEXPORT unsigned char* core_Mat_n_1dataAddr
+	JNIEXPORT unsigned char* opencvunity_core_Mat_n_1dataAddr
 		(Mat* self)
 	{
 
@@ -1025,10 +1025,10 @@ extern "C" {
 	//  int Mat::depth()
 	//
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1depth
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1depth
 		(JNIEnv* env, jclass, jlong self);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1depth
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1depth
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1depth()";
@@ -1047,7 +1047,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_n_1depth
+	JNIEXPORT int opencvunity_core_Mat_n_1depth
 		(Mat* self)
 	{
 
@@ -1062,10 +1062,10 @@ extern "C" {
 	//  Mat Mat::diag(int d = 0)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1diag__JI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1diag__JI
 		(JNIEnv* env, jclass, jlong self, jint d);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1diag__JI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1diag__JI
 		(JNIEnv* env, jclass, jlong self, jint d)
 	{
 		static const char method_name[] = "Mat::n_1diag__JI()";
@@ -1085,7 +1085,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1diag__JI
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1diag__JI
 		(Mat* self, int d)
 	{
 
@@ -1102,10 +1102,10 @@ extern "C" {
 	// static Mat Mat::diag(Mat d)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1diag__J
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1diag__J
 		(JNIEnv* env, jclass, jlong d_nativeObj);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1diag__J
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1diag__J
 		(JNIEnv* env, jclass, jlong d_nativeObj)
 	{
 		static const char method_name[] = "Mat::n_1diag__J()";
@@ -1124,7 +1124,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1diag__J
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1diag__J
 		(Mat* d_nativeObj)
 	{
 		Mat _retval_ = Mat::diag((*(Mat*)d_nativeObj));
@@ -1138,10 +1138,10 @@ extern "C" {
 	//  double Mat::dot(Mat m)
 	//
 
-	JNIEXPORT jdouble JNICALL Java_org_opencv_core_Mat_n_1dot
+	JNIEXPORT jdouble JNICALL Java_org_opencv_opencvunity_core_Mat_n_1dot
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj);
 
-	JNIEXPORT jdouble JNICALL Java_org_opencv_core_Mat_n_1dot
+	JNIEXPORT jdouble JNICALL Java_org_opencv_opencvunity_core_Mat_n_1dot
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj)
 	{
 		static const char method_name[] = "Mat::n_1dot()";
@@ -1162,7 +1162,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT double core_Mat_n_1dot
+	JNIEXPORT double opencvunity_core_Mat_n_1dot
 		(Mat* self, Mat* m_nativeObj)
 	{
 
@@ -1178,10 +1178,10 @@ extern "C" {
 	//  size_t Mat::elemSize()
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1elemSize
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1elemSize
 		(JNIEnv* env, jclass, jlong self);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1elemSize
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1elemSize
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1elemSize()";
@@ -1201,7 +1201,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT unsigned int* core_Mat_n_1elemSize
+	JNIEXPORT unsigned int* opencvunity_core_Mat_n_1elemSize
 		(Mat* self)
 	{
 
@@ -1216,10 +1216,10 @@ extern "C" {
 	//  size_t Mat::elemSize1()
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1elemSize1
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1elemSize1
 		(JNIEnv* env, jclass, jlong self);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1elemSize1
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1elemSize1
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1elemSize1()";
@@ -1239,7 +1239,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT unsigned int* core_Mat_n_1elemSize1
+	JNIEXPORT unsigned int* opencvunity_core_Mat_n_1elemSize1
 		(Mat* self)
 	{
 
@@ -1254,10 +1254,10 @@ extern "C" {
 	//  bool Mat::empty()
 	//
 
-	JNIEXPORT jboolean JNICALL Java_org_opencv_core_Mat_n_1empty
+	JNIEXPORT jboolean JNICALL Java_org_opencv_opencvunity_core_Mat_n_1empty
 		(JNIEnv* env, jclass, jlong self);
 
-	JNIEXPORT jboolean JNICALL Java_org_opencv_core_Mat_n_1empty
+	JNIEXPORT jboolean JNICALL Java_org_opencv_opencvunity_core_Mat_n_1empty
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1empty()";
@@ -1276,7 +1276,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT bool core_Mat_n_1empty
+	JNIEXPORT bool opencvunity_core_Mat_n_1empty
 		(Mat* self)
 	{
 
@@ -1292,10 +1292,10 @@ extern "C" {
 	// static Mat Mat::eye(int rows, int cols, int type)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1eye__III
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1eye__III
 		(JNIEnv* env, jclass, jint rows, jint cols, jint type);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1eye__III
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1eye__III
 		(JNIEnv* env, jclass, jint rows, jint cols, jint type)
 	{
 		static const char method_name[] = "Mat::n_1eye__III()";
@@ -1314,7 +1314,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1eye__III
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1eye__III
 		(int rows, int cols, int type)
 	{
 
@@ -1329,10 +1329,10 @@ extern "C" {
 	// static Mat Mat::eye(Size size, int type)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1eye__DDI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1eye__DDI
 		(JNIEnv* env, jclass, jdouble size_width, jdouble size_height, jint type);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1eye__DDI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1eye__DDI
 		(JNIEnv* env, jclass, jdouble size_width, jdouble size_height, jint type)
 	{
 		static const char method_name[] = "Mat::n_1eye__DDI()";
@@ -1353,7 +1353,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1eye__DDI
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1eye__DDI
 		(double size_width, double size_height, int type)
 	{
 
@@ -1369,10 +1369,10 @@ extern "C" {
 	//  Mat Mat::inv(int method = DECOMP_LU)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1inv__JI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1inv__JI
 		(JNIEnv* env, jclass, jlong self, jint method);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1inv__JI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1inv__JI
 		(JNIEnv* env, jclass, jlong self, jint method)
 	{
 		static const char method_name[] = "Mat::n_1inv__JI()";
@@ -1392,7 +1392,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1inv__JI
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1inv__JI
 		(Mat* self, int method)
 	{
 
@@ -1403,10 +1403,10 @@ extern "C" {
 	}
 
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1inv__J
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1inv__J
 		(JNIEnv* env, jclass, jlong self);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1inv__J
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1inv__J
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1inv__J()";
@@ -1427,7 +1427,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1inv__J
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1inv__J
 		(Mat* self)
 	{
 
@@ -1443,10 +1443,10 @@ extern "C" {
 	//  bool Mat::isContinuous()
 	//
 
-	JNIEXPORT jboolean JNICALL Java_org_opencv_core_Mat_n_1isContinuous
+	JNIEXPORT jboolean JNICALL Java_org_opencv_opencvunity_core_Mat_n_1isContinuous
 		(JNIEnv* env, jclass, jlong self);
 
-	JNIEXPORT jboolean JNICALL Java_org_opencv_core_Mat_n_1isContinuous
+	JNIEXPORT jboolean JNICALL Java_org_opencv_opencvunity_core_Mat_n_1isContinuous
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1isContinuous()";
@@ -1466,7 +1466,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT bool core_Mat_n_1isContinuous
+	JNIEXPORT bool opencvunity_core_Mat_n_1isContinuous
 		(Mat* self)
 	{
 
@@ -1481,10 +1481,10 @@ extern "C" {
 	//  bool Mat::isSubmatrix()
 	//
 
-	JNIEXPORT jboolean JNICALL Java_org_opencv_core_Mat_n_1isSubmatrix
+	JNIEXPORT jboolean JNICALL Java_org_opencv_opencvunity_core_Mat_n_1isSubmatrix
 		(JNIEnv* env, jclass, jlong self);
 
-	JNIEXPORT jboolean JNICALL Java_org_opencv_core_Mat_n_1isSubmatrix
+	JNIEXPORT jboolean JNICALL Java_org_opencv_opencvunity_core_Mat_n_1isSubmatrix
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1isSubmatrix()";
@@ -1503,7 +1503,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT bool core_Mat_n_1isSubmatrix
+	JNIEXPORT bool opencvunity_core_Mat_n_1isSubmatrix
 		(Mat* self)
 	{
 
@@ -1518,10 +1518,10 @@ extern "C" {
 	//  void Mat::locateROI(Size wholeSize, Point ofs)
 	//
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_locateROI_10
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_locateROI_10
 		(JNIEnv* env, jclass, jlong self, jdoubleArray wholeSize_out, jdoubleArray ofs_out);
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_locateROI_10
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_locateROI_10
 		(JNIEnv* env, jclass, jlong self, jdoubleArray wholeSize_out, jdoubleArray ofs_out)
 	{
 		static const char method_name[] = "core::locateROI_10()";
@@ -1542,7 +1542,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT void core_Mat_locateROI_10
+	JNIEXPORT void opencvunity_core_Mat_locateROI_10
 		(Mat* self, double* wholeSize_out, double* ofs_out)
 	{
 
@@ -1563,10 +1563,10 @@ extern "C" {
 	//  Mat Mat::mul(Mat m, double scale = 1)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1mul__JJD
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1mul__JJD
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj, jdouble scale);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1mul__JJD
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1mul__JJD
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj, jdouble scale)
 	{
 		static const char method_name[] = "Mat::n_1mul__JJD()";
@@ -1587,7 +1587,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1mul__JJD
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1mul__JJD
 		(Mat* self, Mat* m_nativeObj, double scale)
 	{
 
@@ -1600,10 +1600,10 @@ extern "C" {
 
 
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1mul__JJ
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1mul__JJ
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1mul__JJ
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1mul__JJ
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj)
 	{
 		static const char method_name[] = "Mat::n_1mul__JJ()";
@@ -1624,7 +1624,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1mul__JJ
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1mul__JJ
 		(Mat* self, Mat* m_nativeObj)
 	{
 
@@ -1641,10 +1641,10 @@ extern "C" {
 	// static Mat Mat::ones(int rows, int cols, int type)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1ones__III
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1ones__III
 		(JNIEnv* env, jclass, jint rows, jint cols, jint type);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1ones__III
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1ones__III
 		(JNIEnv* env, jclass, jint rows, jint cols, jint type)
 	{
 		static const char method_name[] = "Mat::n_1ones__III()";
@@ -1663,7 +1663,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1ones__III
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1ones__III
 		(int rows, int cols, int type)
 	{
 
@@ -1678,10 +1678,10 @@ extern "C" {
 	// static Mat Mat::ones(Size size, int type)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1ones__DDI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1ones__DDI
 		(JNIEnv* env, jclass, jdouble size_width, jdouble size_height, jint type);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1ones__DDI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1ones__DDI
 		(JNIEnv* env, jclass, jdouble size_width, jdouble size_height, jint type)
 	{
 		static const char method_name[] = "Mat::n_1ones__DDI()";
@@ -1701,7 +1701,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1ones__DDI
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1ones__DDI
 		(double size_width, double size_height, int type)
 	{
 
@@ -1717,10 +1717,10 @@ extern "C" {
 	//  void Mat::push_back(Mat m)
 	//
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1push_1back
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1push_1back
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj);
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1push_1back
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1push_1back
 		(JNIEnv* env, jclass, jlong self, jlong m_nativeObj)
 	{
 		static const char method_name[] = "Mat::n_1push_1back()";
@@ -1737,7 +1737,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1push_1back
+	JNIEXPORT void opencvunity_core_Mat_n_1push_1back
 		(Mat* self, Mat* m_nativeObj)
 	{
 
@@ -1752,10 +1752,10 @@ extern "C" {
 	//  void Mat::release()
 	//
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1release
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1release
 		(JNIEnv* env, jclass, jlong self);
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1release
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1release
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1release()";
@@ -1772,7 +1772,7 @@ extern "C" {
 		}
 	}
 
-	JNIEXPORT void core_Mat_n_1release
+	JNIEXPORT void opencvunity_core_Mat_n_1release
 		(Mat* self)
 	{
 		Mat* me = (Mat*)self; //TODO: check for NULL
@@ -1786,10 +1786,10 @@ extern "C" {
 	//  Mat Mat::reshape(int cn, int rows = 0)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1reshape__JII
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1reshape__JII
 		(JNIEnv* env, jclass, jlong self, jint cn, jint rows);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1reshape__JII
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1reshape__JII
 		(JNIEnv* env, jclass, jlong self, jint cn, jint rows)
 	{
 		static const char method_name[] = "Mat::n_1reshape__JII()";
@@ -1809,7 +1809,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1reshape__JII
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1reshape__JII
 		(Mat* self, int cn, int rows)
 	{
 
@@ -1821,10 +1821,10 @@ extern "C" {
 
 
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1reshape__JI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1reshape__JI
 		(JNIEnv* env, jclass, jlong self, jint cn);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1reshape__JI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1reshape__JI
 		(JNIEnv* env, jclass, jlong self, jint cn)
 	{
 		static const char method_name[] = "Mat::n_1reshape__JI()";
@@ -1844,7 +1844,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1reshape__JI
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1reshape__JI
 		(Mat* self, int cn)
 	{
 		Mat* me = (Mat*)self; //TODO: check for NULL
@@ -1858,10 +1858,10 @@ extern "C" {
 	//  Mat Mat::row(int y)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1row
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1row
 		(JNIEnv* env, jclass, jlong self, jint y);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1row
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1row
 		(JNIEnv* env, jclass, jlong self, jint y)
 	{
 		static const char method_name[] = "Mat::n_1row()";
@@ -1882,7 +1882,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1row
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1row
 		(Mat* self, int y)
 	{
 		Mat* me = (Mat*)self; //TODO: check for NULL
@@ -1896,10 +1896,10 @@ extern "C" {
 	//  Mat Mat::rowRange(int startrow, int endrow)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1rowRange
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1rowRange
 		(JNIEnv* env, jclass, jlong self, jint startrow, jint endrow);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1rowRange
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1rowRange
 		(JNIEnv* env, jclass, jlong self, jint startrow, jint endrow)
 	{
 		static const char method_name[] = "Mat::n_1rowRange()";
@@ -1920,7 +1920,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1rowRange
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1rowRange
 		(Mat* self, int startrow, int endrow)
 	{
 		Mat* me = (Mat*)self; //TODO: check for NULL
@@ -1934,10 +1934,10 @@ extern "C" {
 	//  int Mat::rows()
 	//
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1rows
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1rows
 		(JNIEnv* env, jclass, jlong self);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1rows
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1rows
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1rows()";
@@ -1956,7 +1956,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_n_1rows
+	JNIEXPORT int opencvunity_core_Mat_n_1rows
 		(Mat* self)
 	{
 
@@ -1971,10 +1971,10 @@ extern "C" {
 	//  Mat Mat::operator =(Scalar s)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1setTo__JDDDD
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1setTo__JDDDD
 		(JNIEnv* env, jclass, jlong self, jdouble s_val0, jdouble s_val1, jdouble s_val2, jdouble s_val3);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1setTo__JDDDD
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1setTo__JDDDD
 		(JNIEnv* env, jclass, jlong self, jdouble s_val0, jdouble s_val1, jdouble s_val2, jdouble s_val3)
 	{
 		static const char method_name[] = "Mat::n_1setTo__JDDDD()";
@@ -1995,7 +1995,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1setTo__JDDDD
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1setTo__JDDDD
 		(Mat* self, double s_val0, double s_val1, double s_val2, double s_val3)
 	{
 
@@ -2010,10 +2010,10 @@ extern "C" {
 	//  Mat Mat::setTo(Scalar value, Mat mask = Mat())
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1setTo__JDDDDJ
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1setTo__JDDDDJ
 		(JNIEnv* env, jclass, jlong self, jdouble s_val0, jdouble s_val1, jdouble s_val2, jdouble s_val3, jlong mask_nativeObj);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1setTo__JDDDDJ
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1setTo__JDDDDJ
 		(JNIEnv* env, jclass, jlong self, jdouble s_val0, jdouble s_val1, jdouble s_val2, jdouble s_val3, jlong mask_nativeObj)
 	{
 		static const char method_name[] = "Mat::n_1setTo__JDDDDJ()";
@@ -2036,7 +2036,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1setTo__JDDDDJ
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1setTo__JDDDDJ
 		(Mat* self, double s_val0, double s_val1, double s_val2, double s_val3, Mat* mask_nativeObj)
 	{
 
@@ -2053,10 +2053,10 @@ extern "C" {
 	//  Mat Mat::setTo(Mat value, Mat mask = Mat())
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1setTo__JJJ
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1setTo__JJJ
 		(JNIEnv* env, jclass, jlong self, jlong value_nativeObj, jlong mask_nativeObj);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1setTo__JJJ
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1setTo__JJJ
 		(JNIEnv* env, jclass, jlong self, jlong value_nativeObj, jlong mask_nativeObj)
 	{
 		static const char method_name[] = "Mat::n_1setTo__JJJ()";
@@ -2079,7 +2079,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1setTo__JJJ
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1setTo__JJJ
 		(Mat* self, Mat* value_nativeObj, Mat* mask_nativeObj)
 	{
 
@@ -2092,10 +2092,10 @@ extern "C" {
 	}
 
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1setTo__JJ
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1setTo__JJ
 		(JNIEnv* env, jclass, jlong self, jlong value_nativeObj);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1setTo__JJ
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1setTo__JJ
 		(JNIEnv* env, jclass, jlong self, jlong value_nativeObj)
 	{
 		static const char method_name[] = "Mat::n_1setTo__JJ()";
@@ -2116,7 +2116,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1setTo__JJ
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1setTo__JJ
 		(Mat* self, Mat* value_nativeObj)
 	{
 
@@ -2133,10 +2133,10 @@ extern "C" {
 	//  Size Mat::size()
 	//
 
-	JNIEXPORT jdoubleArray JNICALL Java_org_opencv_core_Mat_n_1size
+	JNIEXPORT jdoubleArray JNICALL Java_org_opencv_opencvunity_core_Mat_n_1size
 		(JNIEnv* env, jclass, jlong self);
 
-	JNIEXPORT jdoubleArray JNICALL Java_org_opencv_core_Mat_n_1size
+	JNIEXPORT jdoubleArray JNICALL Java_org_opencv_opencvunity_core_Mat_n_1size
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1size()";
@@ -2159,7 +2159,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT void core_Mat_n_1size
+	JNIEXPORT void opencvunity_core_Mat_n_1size
 		(Mat* self, double* vals)
 	{
 
@@ -2176,10 +2176,10 @@ extern "C" {
 	//  size_t Mat::step1(int i = 0)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1step1__JI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1step1__JI
 		(JNIEnv* env, jclass, jlong self, jint i);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1step1__JI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1step1__JI
 		(JNIEnv* env, jclass, jlong self, jint i)
 	{
 		static const char method_name[] = "Mat::n_1step1__JI()";
@@ -2198,7 +2198,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT long core_Mat_n_1step1__JI
+	JNIEXPORT long opencvunity_core_Mat_n_1step1__JI
 		(Mat* self, int i)
 	{
 
@@ -2209,10 +2209,10 @@ extern "C" {
 
 
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1step1__J
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1step1__J
 		(JNIEnv* env, jclass, jlong self);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1step1__J
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1step1__J
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1step1__J()";
@@ -2232,7 +2232,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT long core_Mat_n_1step1__J
+	JNIEXPORT long opencvunity_core_Mat_n_1step1__J
 		(Mat* self)
 	{
 
@@ -2244,10 +2244,10 @@ extern "C" {
 	//  Mat Mat::operator()(Range rowRange, Range colRange)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1submat_1rr
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1submat_1rr
 		(JNIEnv* env, jclass, jlong self, jint rowRange_start, jint rowRange_end, jint colRange_start, jint colRange_end);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1submat_1rr
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1submat_1rr
 		(JNIEnv* env, jclass, jlong self, jint rowRange_start, jint rowRange_end, jint colRange_start, jint colRange_end)
 	{
 		static const char method_name[] = "Mat::n_1submat_1rr()";
@@ -2269,7 +2269,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1submat_1rr
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1submat_1rr
 		(Mat* self, int rowRange_start, int rowRange_end, int colRange_start, int colRange_end)
 	{
 
@@ -2287,10 +2287,10 @@ extern "C" {
 	//  Mat Mat::operator()(Rect roi)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1submat
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1submat
 		(JNIEnv* env, jclass, jlong self, jint roi_x, jint roi_y, jint roi_width, jint roi_height);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1submat
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1submat
 		(JNIEnv* env, jclass, jlong self, jint roi_x, jint roi_y, jint roi_width, jint roi_height)
 	{
 		static const char method_name[] = "Mat::n_1submat()";
@@ -2311,7 +2311,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT Mat* core_Mat_n_1submat
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1submat
 		(Mat* self, int roi_x, int roi_y, int roi_width, int roi_height)
 	{
 
@@ -2328,10 +2328,10 @@ extern "C" {
 	//  Mat Mat::t()
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1t
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1t
 		(JNIEnv* env, jclass, jlong self);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1t
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1t
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1t()";
@@ -2352,7 +2352,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1t
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1t
 		(Mat* self)
 	{
 
@@ -2366,10 +2366,10 @@ extern "C" {
 	//  size_t Mat::total()
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1total
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1total
 		(JNIEnv* env, jclass, jlong self);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1total
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1total
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1total()";
@@ -2388,7 +2388,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT long core_Mat_n_1total
+	JNIEXPORT long opencvunity_core_Mat_n_1total
 		(Mat* self)
 	{
 
@@ -2404,10 +2404,10 @@ extern "C" {
 	//  int Mat::type()
 	//
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1type
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1type
 		(JNIEnv* env, jclass, jlong self);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_n_1type
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_n_1type
 		(JNIEnv* env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::n_1type()";
@@ -2426,7 +2426,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_n_1type
+	JNIEXPORT int opencvunity_core_Mat_n_1type
 		(Mat* self)
 	{
 
@@ -2441,10 +2441,10 @@ extern "C" {
 	// static Mat Mat::zeros(int rows, int cols, int type)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1zeros__III
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1zeros__III
 		(JNIEnv* env, jclass, jint rows, jint cols, jint type);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1zeros__III
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1zeros__III
 		(JNIEnv* env, jclass, jint rows, jint cols, jint type)
 	{
 		static const char method_name[] = "Mat::n_1zeros__III()";
@@ -2464,7 +2464,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1zeros__III
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1zeros__III
 		(int rows, int cols, int type)
 	{
 
@@ -2478,10 +2478,10 @@ extern "C" {
 	// static Mat Mat::zeros(Size size, int type)
 	//
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1zeros__DDI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1zeros__DDI
 		(JNIEnv* env, jclass, jdouble size_width, jdouble size_height, jint type);
 
-	JNIEXPORT jlong JNICALL Java_org_opencv_core_Mat_n_1zeros__DDI
+	JNIEXPORT jlong JNICALL Java_org_opencv_opencvunity_core_Mat_n_1zeros__DDI
 		(JNIEnv* env, jclass, jdouble size_width, jdouble size_height, jint type)
 	{
 		static const char method_name[] = "Mat::n_1zeros__DDI()";
@@ -2502,7 +2502,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT Mat* core_Mat_n_1zeros__DDI
+	JNIEXPORT Mat* opencvunity_core_Mat_n_1zeros__DDI
 		(double size_width, double size_height, int type)
 	{
 
@@ -2518,16 +2518,16 @@ extern "C" {
 	//  static void Mat::n_delete( __int64 self )
 	//
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1delete
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1delete
 		(JNIEnv*, jclass, jlong self);
 
-	JNIEXPORT void JNICALL Java_org_opencv_core_Mat_n_1delete
+	JNIEXPORT void JNICALL Java_org_opencv_opencvunity_core_Mat_n_1delete
 		(JNIEnv*, jclass, jlong self)
 	{
 		delete (Mat*)self;
 	}
 
-	JNIEXPORT void core_Mat_n_1delete
+	JNIEXPORT void opencvunity_core_Mat_n_1delete
 		(Mat* self)
 	{
 		delete (Mat*)self;
@@ -2536,10 +2536,10 @@ extern "C" {
 	// unlike other nPut()-s this one (with double[]) should convert input values to correct type
 #define PUT_ITEM(T, R, C) { T*dst = (T*)me->ptr(R, C); for(int ch=0; ch<me->channels() && count>0; count--,ch++,src++,dst++) *dst = cv::saturate_cast<T>(*src); }
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nPutD
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nPutD
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jdoubleArray vals);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nPutD
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nPutD
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jdoubleArray vals)
 	{
 		static const char method_name[] = "Mat::nPutD()";
@@ -2596,7 +2596,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT int core_Mat_nPutD
+	JNIEXPORT int opencvunity_core_Mat_nPutD
 		(Mat* self, int row, int col, int count, double* vals)
 	{
 
@@ -2679,10 +2679,10 @@ template<typename T> static int mat_put(cv::Mat* m, int row, int col, int count,
 
 extern "C" {
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nPutB
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nPutB
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jbyteArray vals);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nPutB
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nPutB
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jbyteArray vals)
 	{
 		static const char method_name[] = "Mat::nPutB()";
@@ -2709,7 +2709,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT int core_Mat_nPutB
+	JNIEXPORT int opencvunity_core_Mat_nPutB
 		(Mat* self, int row, int col, int count, char* vals)
 	{
 
@@ -2725,10 +2725,10 @@ extern "C" {
 
 	}
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nPutS
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nPutS
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jshortArray vals);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nPutS
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nPutS
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jshortArray vals)
 	{
 		static const char method_name[] = "Mat::nPutS()";
@@ -2754,7 +2754,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_nPutS
+	JNIEXPORT int opencvunity_core_Mat_nPutS
 		(Mat* self, int row, int col, int count, short* vals)
 	{
 
@@ -2770,10 +2770,10 @@ extern "C" {
 
 	}
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nPutI
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nPutI
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jintArray vals);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nPutI
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nPutI
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jintArray vals)
 	{
 		static const char method_name[] = "Mat::nPutI()";
@@ -2800,7 +2800,7 @@ extern "C" {
 	}
 
 
-	JNIEXPORT int core_Mat_nPutI
+	JNIEXPORT int opencvunity_core_Mat_nPutI
 		(Mat* self, int row, int col, int count, int* vals)
 	{
 
@@ -2815,10 +2815,10 @@ extern "C" {
 
 	}
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nPutF
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nPutF
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jfloatArray vals);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nPutF
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nPutF
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jfloatArray vals)
 	{
 		static const char method_name[] = "Mat::nPutF()";
@@ -2844,7 +2844,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_nPutF
+	JNIEXPORT int opencvunity_core_Mat_nPutF
 		(Mat* self, int row, int col, int count, float* vals)
 	{
 
@@ -2895,10 +2895,10 @@ template<typename T> int mat_get(cv::Mat* m, int row, int col, int count, char* 
 
 extern "C" {
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nGetB
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nGetB
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jbyteArray vals);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nGetB
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nGetB
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jbyteArray vals)
 	{
 		static const char method_name[] = "Mat::nGetB()";
@@ -2924,7 +2924,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_nGetB
+	JNIEXPORT int opencvunity_core_Mat_nGetB
 		(Mat* self, int row, int col, int count, char* vals)
 	{
 
@@ -2940,10 +2940,10 @@ extern "C" {
 
 	}
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nGetS
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nGetS
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jshortArray vals);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nGetS
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nGetS
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jshortArray vals)
 	{
 		static const char method_name[] = "Mat::nGetS()";
@@ -2969,7 +2969,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_nGetS
+	JNIEXPORT int opencvunity_core_Mat_nGetS
 		(Mat* self, int row, int col, int count, short* vals)
 	{
 
@@ -2984,10 +2984,10 @@ extern "C" {
 
 	}
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nGetI
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nGetI
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jintArray vals);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nGetI
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nGetI
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jintArray vals)
 	{
 		static const char method_name[] = "Mat::nGetI()";
@@ -3013,7 +3013,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_nGetI
+	JNIEXPORT int opencvunity_core_Mat_nGetI
 		(Mat* self, int row, int col, int count, int* vals)
 	{
 
@@ -3028,10 +3028,10 @@ extern "C" {
 
 	}
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nGetF
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nGetF
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jfloatArray vals);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nGetF
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nGetF
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jfloatArray vals)
 	{
 		static const char method_name[] = "Mat::nGetF()";
@@ -3057,7 +3057,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_nGetF
+	JNIEXPORT int opencvunity_core_Mat_nGetF
 		(Mat* self, int row, int col, int count, float* vals)
 	{
 
@@ -3073,10 +3073,10 @@ extern "C" {
 
 	}
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nGetD
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nGetD
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jdoubleArray vals);
 
-	JNIEXPORT jint JNICALL Java_org_opencv_core_Mat_nGetD
+	JNIEXPORT jint JNICALL Java_org_opencv_opencvunity_core_Mat_nGetD
 		(JNIEnv* env, jclass, jlong self, jint row, jint col, jint count, jdoubleArray vals)
 	{
 		static const char method_name[] = "Mat::nGetD()";
@@ -3102,7 +3102,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_nGetD
+	JNIEXPORT int opencvunity_core_Mat_nGetD
 		(Mat* self, int row, int col, int count, double* vals)
 	{
 
@@ -3118,10 +3118,10 @@ extern "C" {
 
 	}
 
-	JNIEXPORT jdoubleArray JNICALL Java_org_opencv_core_Mat_nGet
+	JNIEXPORT jdoubleArray JNICALL Java_org_opencv_opencvunity_core_Mat_nGet
 		(JNIEnv* env, jclass, jlong self, jint row, jint col);
 
-	JNIEXPORT jdoubleArray JNICALL Java_org_opencv_core_Mat_nGet
+	JNIEXPORT jdoubleArray JNICALL Java_org_opencv_opencvunity_core_Mat_nGet
 		(JNIEnv* env, jclass, jlong self, jint row, jint col)
 	{
 		static const char method_name[] = "Mat::nGet()";
@@ -3158,7 +3158,7 @@ extern "C" {
 		return 0;
 	}
 
-	JNIEXPORT int core_Mat_nGet(Mat* self, int row, int col, int count, double* vals)
+	JNIEXPORT int opencvunity_core_Mat_nGet(Mat* self, int row, int col, int count, double* vals)
 	{
 		if (!self) return 0; // no native object behind
 		if (self->rows <= row || self->cols <= col) return 0; // indexes out of range
@@ -3180,7 +3180,7 @@ extern "C" {
 		return res;
 	}
 
-	JNIEXPORT const char* opencvunity_core_Mat_nDump(Mat* self)
+	JNIEXPORT const char* opencvunity_opencvunity_core_Mat_nDump(Mat* self)
 	{
 		String s;
 		Ptr<Formatted> fmtd = Formatter::get()->format(*self);
@@ -3192,10 +3192,10 @@ extern "C" {
 		return dump;
 	}
 
-	JNIEXPORT jstring JNICALL Java_org_opencv_core_Mat_nDump
+	JNIEXPORT jstring JNICALL Java_org_opencv_opencvunity_core_Mat_nDump
 		(JNIEnv *env, jclass, jlong self);
 
-	JNIEXPORT jstring JNICALL Java_org_opencv_core_Mat_nDump
+	JNIEXPORT jstring JNICALL Java_org_opencv_opencvunity_core_Mat_nDump
 		(JNIEnv *env, jclass, jlong self)
 	{
 		static const char method_name[] = "Mat::nDump()";

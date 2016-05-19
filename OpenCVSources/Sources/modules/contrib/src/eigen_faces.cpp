@@ -16,7 +16,7 @@
  *   See <http://www.opensource.org/licenses/bsd-license>
  */
 #include "precomp.hpp"
-#include "opencv2\objdetect\eigen_faces.hpp"
+#include "opencv2\contrib\eigen_faces.hpp"
 #include <set>
 #include <limits>
 #include <iostream>
