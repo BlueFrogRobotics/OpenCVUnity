@@ -659,7 +659,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 
-namespace OpenCVForUnity
+namespace OpenCVUnity
 {
 
 // C++: class $name
@@ -699,7 +699,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 
-namespace OpenCVForUnity
+namespace OpenCVUnity
 {
 
 
@@ -738,7 +738,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 
-namespace OpenCVForUnity
+namespace OpenCVUnity
 {
 
 
