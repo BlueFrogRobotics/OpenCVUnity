@@ -44,13 +44,15 @@
 #ifndef __OPENCV_TEXT_OCR_HPP__
 #define __OPENCV_TEXT_OCR_HPP__
 
-#define HAVE_TESSERACT 1
+#include "params.hpp"
 
 #include <vector>
 #include <string>
 
 #undef min
 #undef max
+
+#if HAVE_TESSERACT
 
 namespace cv
 {
@@ -472,4 +474,6 @@ namespace cv
 
 	}
 }
+#endif
+
 #endif // _OPENCV_TEXT_OCR_HPP_

@@ -51,10 +51,13 @@
 #include "opencv2\imgcodecs.hpp"
 #include "opencv2\videoio.hpp"
 #include "opencv2\hal.hpp"
+#include "opencv2\contrib\params.hpp"
 
 #include <iostream>
 #include <fstream>
 #include <queue>
+
+#if HAVE_TESSERACT
 
 namespace cv
 {
@@ -282,3 +285,5 @@ namespace cv
 		}
 }
 }
+
+#endif

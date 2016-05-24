@@ -39,6 +39,7 @@ the use of this software, even if advised of the possibility of such damage.
 #ifndef __OPENCV_TEXT_HPP__
 #define __OPENCV_TEXT_HPP__
 
+#include "contrib/params.hpp"
 #include "contrib/erfilter.hpp"
 #include "contrib/ocr.hpp"
 

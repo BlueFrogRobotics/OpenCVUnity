@@ -66,9 +66,14 @@
 #endif
 
 #include "opencv2/text.hpp"
+#include "opencv2/contrib/params.hpp"
+
+#if HAVE_TESSERACT
 
 #include "baseapi.h"
 #include "resultiterator.h"
+
+#endif
 
 #include "opencv2/core.hpp"
 #include "opencv2/core/utility.hpp"

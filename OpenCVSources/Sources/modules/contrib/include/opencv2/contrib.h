@@ -5,7 +5,6 @@
 #include "opencv2\core\base.hpp"
 #include "opencv2\core\utility.hpp"
 #include "opencv2\core\operations.hpp"
-//#include "opencv2\core\csharp_converter.hpp"
 #include "contrib\converters.hpp"
 #include "..\..\imgproc\include\opencv2\imgproc.hpp"
 #include "opencv2\highgui.hpp"
@@ -24,6 +23,7 @@
 #include "contrib\erfilter.hpp"
 #include "contrib\predict_collector.hpp"
 #include "contrib\ocr.hpp"
+#include "contrib\params.hpp"
 
 #include "face.hpp"
 #include "text.hpp"
@@ -33,7 +33,7 @@
 
 namespace cv {
 
-#if __cplusplus
+#if WINDOWS_PLATFORM && __cplusplus
 	extern "C" {
 #endif
 		DLLEXPORT void opencvunity_objdetect_Objdetect_find_qrCode_10(Mat* image, Mat* correctedimage, Mat* points);
@@ -136,6 +136,8 @@ namespace cv {
 			DLLEXPORT void opencvunity_face_StdPredictCollector_delete_10(StdPredictCollector* pc_native_obj);
 		}
 
+		#if HAVE_TESSERACT
+		
 		namespace text {
 			DLLEXPORT Ptr<OCRTesseract>* opencvunity_text_OCRTesseract_OCRTesseract_10();
 			DLLEXPORT Ptr<OCRTesseract>* opencvunity_text_OCRTesseract_OCRTesseract_11(const char* datapath);
@@ -147,7 +149,10 @@ namespace cv {
 			DLLEXPORT void opencvunity_text_OCRTesseract_setWhiteList_10(Ptr<OCRTesseract>* ocr_native_obj, const char* char_whitelist);
 			DLLEXPORT void opencvunity_text_OCRTesseract_delete(Ptr<OCRTesseract>* ocr_native_obj);
 		}
-#if __cplusplus
+		
+		#endif
+		
+#if WINDOWS_PLATFORM && __cplusplus
 	}
 #endif
 }

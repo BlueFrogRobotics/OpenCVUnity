@@ -598,7 +598,7 @@ namespace cv {
 	//	textureToMat<float>(text, mat, 1);
 	//}
 
-#if __cplusplus
+#if WINDOWS_PLATFORM && __cplusplus
 	extern "C" {
 #endif
 
@@ -733,7 +733,7 @@ namespace cv {
 			//TODO
 			return 2;
 		}
-#if __cplusplus
+#if WINDOWS_PLATFORM && __cplusplus
 	}
 #endif
 }

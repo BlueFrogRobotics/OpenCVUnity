@@ -30,7 +30,7 @@ namespace cv {
 	float computeDistance(Point2f iFirstPoint, Point2f iSecondPoint);
 	float lineEquation(Point2f iFirstPoint, Point2f iSecondPoint, Point2f iThirdPoint);
 	float lineSlope(Point2f iFirstPoint, Point2f iSecondPoint, int& alignement);
-	void getVertices(std::vector<std::vector<Point>> contours, int c_id, float slope, std::vector<Point2f>& X);
+	void getVertices(std::vector<std::vector<Point> > contours, int c_id, float slope, std::vector<Point2f>& X);
 	void updateCorner(Point2f iFirstPoint, Point2f iSecondPoint, float& baseline, Point2f& corner);
 	void updateCornerOr(int orientation, std::vector<Point2f> IN, std::vector<Point2f> &OUT);
 	bool getIntersectionPoint(Point2f a1, Point2f a2, Point2f b1, Point2f b2, Point2f& intersection);

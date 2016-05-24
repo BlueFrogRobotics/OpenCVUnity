@@ -48,6 +48,8 @@
 #include <fstream>
 #include <set>
 
+#if HAVE_TESSERACT
+
 namespace cv
 {
 	namespace text
@@ -785,3 +787,5 @@ namespace cv
 
 	}
 }
+
+#endif

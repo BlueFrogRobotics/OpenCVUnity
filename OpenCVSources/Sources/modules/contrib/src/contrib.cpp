@@ -3,7 +3,7 @@
 
 namespace cv {
 	
-#if __cplusplus
+#if WINDOWS_PLATFORM && __cplusplus
 	extern "C" {
 #endif	
 		void opencvunity_objdetect_Objdetect_find_text_10(Mat* img, Mat* rects, int width, int height) {
@@ -14,9 +14,9 @@ namespace cv {
 			threshold(img_sobel, img_threshold, 0, 255, THRESH_OTSU + THRESH_BINARY);
 			element = getStructuringElement(cv::MORPH_RECT, cv::Size(width, height));
 			morphologyEx(img_threshold, img_threshold, MORPH_CLOSE, element);
-			std::vector< std::vector<Point>> contours;
+			std::vector< std::vector<Point> > contours;
 			findContours(img_threshold, contours, 0, 1);
-			std::vector<std::vector<Point>> contours_poly(contours.size());
+			std::vector<std::vector<Point> > contours_poly(contours.size());
 			for (int i = 0; i < contours.size(); i++)
 				if (contours[i].size() > 100)
 				{
@@ -331,7 +331,7 @@ namespace cv {
 			}
 
 			Mat* opencvunity_face_MapPredictCollector_getResult_10(MapPredictCollector* pc_native_obj) {
-				std::vector<std::pair<int, double>> vec = pc_native_obj->getResultVector();
+				std::vector<std::pair<int, double> > vec = pc_native_obj->getResultVector();
 				Mat res(vec.size(), 2, CV_64FC1);
 				for (int i = 0; i < vec.size(); ++i) {
 					std::pair<int, double> pair = vec[i];
@@ -358,7 +358,7 @@ namespace cv {
 			}
 
 			Mat* opencvunity_face_VectorPredictCollector_getResult_10(VectorPredictCollector* pc_native_obj) {
-				std::vector<std::pair<int, double>> vec = pc_native_obj->getResultVector();
+				std::vector<std::pair<int, double> > vec = pc_native_obj->getResultVector();
 				Mat res(vec.size(), 2, CV_64FC1);
 				for (int i = 0; i < vec.size(); ++i) {
 					std::pair<int, double> pair = vec[i];
@@ -389,7 +389,7 @@ namespace cv {
 			}
 
 			Mat* opencvunity_face_TopNPredictCollector_getResult_10(TopNPredictCollector* pc_native_obj) {
-				std::vector<std::pair<int, double>> vec = pc_native_obj->getResultVector();
+				std::vector<std::pair<int, double> > vec = pc_native_obj->getResultVector();
 				Mat res(vec.size(), 2, CV_64FC1);
 				for (int i = 0; i < vec.size(); ++i) {
 					std::pair<int, double> pair = vec[i];
@@ -462,6 +462,8 @@ namespace cv {
 
 		// Tesseract OCR
 
+		#if HAVE_TESSERACT
+		
 		namespace text {
 
 			Ptr<OCRTesseract>* opencvunity_text_OCRTesseract_OCRTesseract_10() {
@@ -506,9 +508,12 @@ namespace cv {
 			void opencvunity_text_OCRTesseract_delete(Ptr<OCRTesseract>* ocr_native_obj) {
 				delete ocr_native_obj;
 			}
+			
 		}
+		
+		#endif
 
-#if __cplusplus
+#if WINDOWS_PLATFORM && __cplusplus
 	}
 #endif
 }

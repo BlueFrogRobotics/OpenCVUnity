@@ -45,12 +45,15 @@
 #define __OPENCV_TEXT_ERFILTER_HPP__
 
 #include "opencv2/core.hpp"
+#include "params.hpp"
 #include <vector>
 #include <deque>
 #include <string>
 
 #undef min
 #undef max
+
+#if HAVE_TESSERACT
 
 namespace cv
 {
@@ -351,4 +354,7 @@ namespace cv
 
 	}
 }
+
+#endif
+
 #endif // _OPENCV_TEXT_ERFILTER_HPP_

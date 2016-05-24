@@ -5,45 +5,9 @@
 #include "opencv2\core\IUnityGraphics.h"
 #include "opencv2\core\IUnityInterface.h"
 #include <vector>
+#include "params.hpp"
 
 namespace cv {
-
-	// Which platform we are on?
-#if _MSC_VER
-#	define UNITY_WIN 1
-#elif defined(__APPLE__)
-#	if defined(__arm__)
-#		define UNITY_IPHONE 1
-#	else
-#	define UNITY_OSX 1
-#	endif
-#elif defined(__linux__)
-#	define UNITY_LINUX 1
-#elif defined(UNITY_METRO) || defined(UNITY_ANDROID)
-	// these are defined externally
-#else
-#	error "Unknown platform!"
-#endif
-
-	// Which graphics device APIs we possibly support?
-#if UNITY_METRO
-#	define SUPPORT_D3D11 1
-#elif UNITY_WIN
-#	define SUPPORT_D3D9 1
-#	define SUPPORT_D3D11 1 // comment this out if you don't have D3D11 header/library files
-#	ifdef _MSC_VER
-#		if _MSC_VER >= 1900
-#			define SUPPORT_D3D12 1
-#		endif
-#	endif
-#	define SUPPORT_OPENGL 1
-#elif UNITY_IPHONE || UNITY_ANDROID
-#	define SUPPORT_OPENGLES 1
-#elif UNITY_OSX || UNITY_LINUX
-#	define SUPPORT_OPENGL 1
-#endif
-
-#define DLLEXPORT __declspec(dllexport)
 
 	typedef Point3i Point3;
 	typedef unsigned char byte;
@@ -120,10 +84,9 @@ namespace cv {
 	//inline void mat_1chan_to_texture(float* dst, const byte* src, size_t n);
 	//inline void texture_to_mat_1chan(byte* dst, const float* src, size_t n);
 
-#if __cplusplus
+#if WINDOWS_PLATFORM && __cplusplus
 	extern "C" {
 #endif
-
 		DLLEXPORT void opencvunity_MatDataToArray(Mat* mat, byte* array);
 		DLLEXPORT const char* opencvunity_GetFilePath(const char* filename);
 		DLLEXPORT void opencvunity_MatToTexture(Mat* mat, byte* textureColors);
@@ -136,8 +99,9 @@ namespace cv {
 		DLLEXPORT void opencvunity_LowLevelTextureToMat(void* texPtr, int texWidth, int texHeight, Mat* mat);
 		DLLEXPORT int opencvunity_GetLowLevelTextureFormat(void* texPtr);
 
-#if __cplusplus
+#if WINDOWS_PLATFORM && __cplusplus
 	}
 #endif
+
 }
 #endif

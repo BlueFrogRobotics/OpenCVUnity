@@ -15,8 +15,8 @@ namespace cv {
 		std::vector<int> lDetectedMarks;
 		std::vector<Vec3i> lQRCodeMarks;
 		std::vector<Vec4i> lHierarchy;
-		std::vector<std::vector<Point>> lContours;
-		std::vector<std::pair<Vec3i, Point2i>> lMarkCombinaisons;
+		std::vector<std::vector<Point> > lContours;
+		std::vector<std::pair<Vec3i, Point2i> > lMarkCombinaisons;
 
 		int A, B, C, top, right, bottom, median1, median2, outlier;
 		float AB, BC, CA, dist, slope;
@@ -76,14 +76,18 @@ namespace cv {
 			int lTreshold = 76000;
 			int lMarge = 30;
 			bool lEndOfDetection = false;
-			for (int firstContourID : lDetectedMarks) {
-				for (int secondContourID : lDetectedMarks) {
-					for (int thirdContourID : lDetectedMarks) {
+			for (int lFirstInd = 0; lFirstInd < lDetectedMarks.size(); ++lFirstInd) {
+				int firstContourID = lDetectedMarks[lFirstInd];
+				for (int lSecondInd = 0; lSecondInd < lDetectedMarks.size(); ++lSecondInd) {
+					int secondContourID = lDetectedMarks[lSecondInd];
+					for (int lThirdInd = 0; lThirdInd < lDetectedMarks.size(); ++lThirdInd) {
+						int thirdContourID = lDetectedMarks[lThirdInd];
 						if (firstContourID != secondContourID
 							&& firstContourID != thirdContourID
 							&& secondContourID != thirdContourID) {
 							bool lCombinaisonAlreadyExist = false;
-							for (std::pair<Vec3i, Point2i> lPair : lMarkCombinaisons) {
+							for (int lCombInd = 0; lCombInd < lMarkCombinaisons.size(); ++lCombInd) {
+								std::pair<Vec3i, Point2i> lPair = lMarkCombinaisons[lCombInd];
 								Vec3i lExistingCombinaison = lPair.first;
 								if ((lExistingCombinaison.val[0] == firstContourID
 									&& lExistingCombinaison.val[1] == secondContourID
@@ -139,7 +143,8 @@ namespace cv {
 			lQRCodeMarks.push_back(Vec3i(lDetectedMarks.at(0), lDetectedMarks.at(1), lDetectedMarks.at(2)));
 		}
 
-		for (Vec3i vec : lQRCodeMarks) {
+		for (int lIndVec = 0; lIndVec < lQRCodeMarks.size(); ++lIndVec) {
+			Vec3i vec = lQRCodeMarks[lIndVec];
 			if (vec.val[2] != -1) {
 				A = vec.val[0];
 				B = vec.val[1];
@@ -273,7 +278,7 @@ namespace cv {
 	}
 
 	// Computes 4 Corners of the Marker in Image Space using Region partitioning
-	void getVertices(std::vector<std::vector<Point>> iContours, int iID, float iSlop, std::vector<Point2f>& iQuad)
+	void getVertices(std::vector<std::vector<Point> > iContours, int iID, float iSlop, std::vector<Point2f>& iQuad)
 	{
 		Rect box;
 		box = boundingRect(iContours[iID]);

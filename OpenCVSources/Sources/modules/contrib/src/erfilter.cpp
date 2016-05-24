@@ -56,6 +56,8 @@
     #endif
 #endif
 
+#ifdef TESSERACT
+
 namespace cv
 {
 namespace text
@@ -4173,3 +4175,5 @@ void MSERsToERStats(InputArray image, vector<vector<Point> > &contours, vector<v
 
 }
 }
+
+#endif
