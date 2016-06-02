@@ -193,6 +193,10 @@ add_cmake_dependencies(${scripts_gen_java} ${scripts_hdr_parser} ${opencv_public
 # step 1: generate .cpp/.java from OpenCV headers
 set(step1_depends "${scripts_gen_java}" "${scripts_hdr_parser}" ${opencv_public_headers})
 foreach(module ${OPENCV_JAVA_MODULES})
+	if (${module} STREQUAL "contrib")
+		continue()
+	endif()
+	#MESSAGE(${module})
   # second run of gen_java.py (at build time)
   add_custom_command(OUTPUT ${generated_java_sources_${module}} "${CMAKE_CURRENT_BINARY_DIR}/${module}.cpp"
                      COMMAND ${PYTHON_DEFAULT_EXECUTABLE} "${scripts_gen_java}" "${scripts_hdr_parser}" ${module} ${opencv_public_headers_${module}}

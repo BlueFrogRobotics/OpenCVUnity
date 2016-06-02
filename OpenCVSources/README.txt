@@ -29,6 +29,7 @@ Build Android :
 	- Valider
 	- Cliquer sur "Configure" (~ 3 minutes)
 	- Dans la configuration :
+		- Spécifier le chemin vers le ANT_EXECUTABLE (apache-ant/bin/ant.bat)
 		- ANDROID_EXECUTABLE : C:\Users\{USER}\AppData\Local\Android\android-sdk\tools\android.bat
 		- ANDROID_NATIVE_API_LEVEL : 17
 		- ZLIB_INCLUDE_DIR : changer android-8 par android-17

@@ -23,7 +23,8 @@
 
 #include "opencv2/core/utility.hpp"
 
-#include "converters.h"
+//#include "converters.h"
+#include "opencv2/core/converters.hpp"
 
 #ifdef _MSC_VER
 #  pragma warning(disable:4800 4244)

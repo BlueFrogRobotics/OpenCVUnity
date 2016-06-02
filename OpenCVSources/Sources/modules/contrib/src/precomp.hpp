@@ -40,8 +40,8 @@
 //
 //M*/
 
-#ifndef __OPENCV_PRECOMP_H__
-#define __OPENCV_PRECOMP_H__
+#ifndef __OPENCV_CONTRIB_PRECOMP_H__
+#define __OPENCV_CONTRIB_PRECOMP_H__
 
 #undef min
 #undef max

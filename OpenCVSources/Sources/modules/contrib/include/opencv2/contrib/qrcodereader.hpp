@@ -8,7 +8,6 @@
 #include "opencv2\core\base.hpp"
 #include "opencv2\core\utility.hpp"
 #include "opencv2\core\operations.hpp"
-#include "converters.hpp"
 
 #include "..\..\imgproc\include\opencv2\imgproc.hpp"
 #include "opencv2\highgui.hpp"

@@ -1,10 +1,11 @@
-#define LOG_TAG "org.opencv.utils.Converters"
-#include "common.h"
+# define LOG_TAG "org.opencv.utils.Converters"
+//# include "common.h"
+# include "..\..\java\generator\src\cpp\common.h"
+# include "opencv2/core/converters.hpp"
 
 using namespace cv;
 
-#define CHECK_MAT(cond) if(!(cond)){ LOGD("FAILED: " #cond); return; }
-
+#define CHECK_MAT(cond) if(!(cond)) { LOGD("FAILED: " #cond); return; }
 
 // vector_int
 
@@ -20,7 +21,6 @@ void vector_int_to_Mat(std::vector<int>& v_int, Mat& mat)
     mat = Mat(v_int, true);
 }
 
-
 //vector_double
 
 void Mat_to_vector_double(Mat& mat, std::vector<double>& v_double)
@@ -35,7 +35,6 @@ void vector_double_to_Mat(std::vector<double>& v_double, Mat& mat)
     mat = Mat(v_double, true);
 }
 
-
 // vector_float
 
 void Mat_to_vector_float(Mat& mat, std::vector<float>& v_float)
@@ -49,7 +48,6 @@ void vector_float_to_Mat(std::vector<float>& v_float, Mat& mat)
 {
     mat = Mat(v_float, true);
 }
-
 
 //vector_uchar
 
@@ -77,7 +75,6 @@ void vector_char_to_Mat(std::vector<char>& v_char, Mat& mat)
     mat = Mat(v_char, true);
 }
 
-
 //vector_Rect
 
 void Mat_to_vector_Rect(Mat& mat, std::vector<Rect>& v_rect)
@@ -91,7 +88,6 @@ void vector_Rect_to_Mat(std::vector<Rect>& v_rect, Mat& mat)
 {
     mat = Mat(v_rect, true);
 }
-
 
 //vector_Point
 void Mat_to_vector_Point(Mat& mat, std::vector<Point>& v_point)
@@ -117,7 +113,6 @@ void Mat_to_vector_Point2d(Mat& mat, std::vector<Point2d>& v_point)
     v_point = (std::vector<Point2d>) mat;
 }
 
-
 //vector_Point3i
 void Mat_to_vector_Point3i(Mat& mat, std::vector<Point3i>& v_point)
 {
@@ -141,7 +136,6 @@ void Mat_to_vector_Point3d(Mat& mat, std::vector<Point3d>& v_point)
     CHECK_MAT(mat.type()==CV_64FC3 && mat.cols==1);
     v_point = (std::vector<Point3d>) mat;
 }
-
 
 void vector_Point_to_Mat(std::vector<Point>& v_point, Mat& mat)
 {
@@ -191,7 +185,6 @@ void Mat_to_vector_Mat(cv::Mat& mat, std::vector<cv::Mat>& v_mat)
         LOGD("Mat_to_vector_Mat() FAILED: mat.type() == CV_32SC2 && mat.cols == 1");
     }
 }
-
 
 void vector_Mat_to_Mat(std::vector<cv::Mat>& v_mat, cv::Mat& mat)
 {
@@ -321,175 +314,4 @@ void vector_Vec4f_to_Mat(std::vector<Vec4f>& v_vec, Mat& mat)
 void vector_Vec6f_to_Mat(std::vector<Vec6f>& v_vec, Mat& mat)
 {
     mat = Mat(v_vec, true);
-}
-
-
-	
-		void mat_4chan_to_texture(unsigned char* dst, const unsigned char* src, size_t n)
-	{
-		for (size_t i = 0; i < n; i += 4 ){
-			dst[n-i-1] = 255;
-			dst[n-i-2] = src[i+2];
-			dst[n-i-3] = src[i+1];
-			dst[n-i-4] = src[i];
-		}
-	}
-
-	
-		void texture_to_mat_4chan(unsigned char* dst, const unsigned char* src, size_t n)
-	{
-		for (size_t i = 0; i < n; i += 4 ){
-			dst[n-i-1] = 255;
-			dst[n-i-2] = src[i+2];
-			dst[n-i-3] = src[i+1];
-			dst[n-i-4] = src[i];
-		}
-	}
-
-	
-		void mat_3chan_to_texture(unsigned char* dst, const unsigned char* src, size_t n)
-	{
-		int k = 0;
-		for (size_t i = 0; i < n; i += 4) {
-			dst[n-i-4] = src[k];
-			dst[n-i-3] = src[k+1];
-			dst[n-i-2] = src[k+2];
-			dst[n-i-1] = 255;
-			k += 3;
-		}
-	}
-
-	
-		void texture_to_mat_3chan(unsigned char* dst, const unsigned char* src, size_t n)
-	{
-		int k = 0;
-		for (size_t i = 0; i < n; i += 3) {
-			dst[n-i-3] = src[k];
-			dst[n-i-2] = src[k+1];
-			dst[n-i-1] = src[k+2];
-			k += 4;
-		}
-	}
-
-
-	
-		void mat_1chan_to_texture(unsigned char* dst, const unsigned char* src,size_t n)
-	{
-		int k = 0;
-			for (size_t i = 0; i < 4*n; i+=4) {
-			dst[4*n-i-4] = src[k];
-			dst[4*n-i-3] = src[k];
-			dst[4*n-i-2] = src[k++];
-			dst[4*n-i-1] = 255;		
-		}
-	}
-
-	
-		void texture_to_mat_1chan(unsigned char* dst, unsigned char* src, size_t n)
-	{
-		int k = 0;
-		for (size_t i = 0; i < n; i += 1) {
-			dst[n-i-1] = src[k] ;
-			k += 4;
-		}
-	}
-
-extern "C" {
-		unsigned char* opencvunity_GetFilePath(unsigned char* filename)
-		{
-			//TODO
-			return filename;
-		}
-
-		void opencvunity_MatDataToArray(Mat* mat, unsigned char* array)
-		{
-			array = (unsigned char*)memcpy(array, mat->data, mat->rows * mat->cols * mat->channels() * sizeof(unsigned char));
-		}
-
-		void opencvunity_MatToTexture(Mat* mat, unsigned char* textureColors)
-		{
-			switch (mat->channels()) {
-			case 1:
-				mat_1chan_to_texture(textureColors, mat->data, mat->total() * sizeof(unsigned char));
-				break;
-			case 3:
-				mat_3chan_to_texture(textureColors, mat->data, mat->total() * (mat->channels() + 1) * sizeof(unsigned char));
-				break;
-			default:
-				mat_4chan_to_texture(textureColors, mat->data, mat->total() * mat->channels() * sizeof(unsigned char));
-				break;
-			}
-		}
-
-		void opencvunity_TextureToMat(unsigned char* textureColors, Mat* mat)
-		{
-			switch (mat->channels()) {
-			case 1:
-				texture_to_mat_1chan(mat->data, textureColors, mat->total() * sizeof(unsigned char));
-				break;
-			case 3:
-				texture_to_mat_3chan(mat->data, textureColors, mat->total() * mat->channels() * sizeof(unsigned char));
-				break;
-			default:
-				texture_to_mat_4chan(mat->data, textureColors, mat->total() * mat->channels() * sizeof(unsigned char));
-				break;
-			}
-		}
-
-		void opencvunity_MatDataToByteArray(Mat* mat, unsigned char* charArray)
-		{
-			charArray = (unsigned char*)memcpy(charArray, mat->data, mat->rows * mat->cols * mat->channels() * sizeof(unsigned char));
-		}
-
-		void opencvunity_ByteArrayToMatData(unsigned char* byteArray, Mat* mat)
-		{
-			mat = (Mat*)memcpy(mat->data, byteArray, mat->rows * mat->cols * mat->channels() * sizeof(unsigned char));
-		}
-
-		void opencvunity_TextureDataToByteArray(void* texPtr, int texWidth, int texHeight,unsigned char* byteArray, int bytesPerPixel)
-		{
-			texture_to_mat_4chan(byteArray, (unsigned char*)texPtr, texWidth * texHeight * bytesPerPixel);
-		}
-
-		void opencvunity_ByteArrayToTextureData(unsigned char* byteArray, void* texPtr, int texWidth, int texHeight, int bytesPerPixel)
-		{
-			mat_4chan_to_texture((unsigned char*)texPtr, byteArray, texWidth * texHeight * bytesPerPixel);
-		}
-
-		void opencvunity_LowLevelMatToTexture(Mat* mat, void* texPtr, int texWidth, int texHeight)
-		{
-			switch (mat->channels()) {
-			case 1:
-				mat_1chan_to_texture((unsigned char*)texPtr, mat->data, mat->total() * sizeof(float));
-				break;
-			case 3:
-				mat_3chan_to_texture((unsigned char*)texPtr, mat->data, mat->total() * (mat->channels() + 1) * sizeof(unsigned char));
-				break;
-			default:
-				mat_4chan_to_texture((unsigned char*)texPtr, mat->data, mat->total() * mat->channels() * sizeof(unsigned char));
-				break;
-			}
-		}
-
-		void opencvunity_LowLevelTextureToMat(void* texPtr, int texWidth, int texHeight, Mat* mat)
-		{
-			switch (mat->channels()) {
-			case 1:
-				texture_to_mat_1chan(mat->data, (unsigned char*)texPtr, mat->total() * sizeof(unsigned char));
-				break;
-			case 3:
-				texture_to_mat_3chan(mat->data, (unsigned char*)texPtr, mat->total() * mat->channels() * sizeof(unsigned char));
-				break;
-			default:
-				texture_to_mat_4chan(mat->data, (unsigned char*)texPtr, mat->total() * mat->channels() * sizeof(unsigned char));
-			}
-		}
-
-		int opencvunity_GetLowLevelTextureFormat(void* texPtr)
-		{
-			//TODO
-			return 2;
-		}
-
-
 }

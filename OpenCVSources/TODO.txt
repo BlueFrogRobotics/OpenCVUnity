@@ -3,11 +3,11 @@
 [X] Centraliser au mieux les sources
 
 [] Centraliser les conversions :
-	[] Se baser sur la couche C# d'enox
-	[] Gérer les mat de byte/short/int/float/double...
+	[X] Se baser sur la couche C# d'enox
+	[X] Gérer les mat de byte/short/int/float/double...
 	[] Eviter vertical revert
 
-[] Changer type et éviter cast dans cpp générés
+[] Eviter cast dans cpp générés
 
 [X] DLL unique pour windows
 
