@@ -156,9 +156,11 @@ namespace cv {
 
 				if (AB > BC && AB > CA) {
 					outlier = C; median1 = A; median2 = B;
-				} else if (CA > AB && CA > BC) {
+				}
+				else if (CA > AB && CA > BC) {
 					outlier = B; median1 = A; median2 = C;
-				} else if (BC > AB && BC > CA) {
+				}
+				else if (BC > AB && BC > CA) {
 					outlier = A;  median1 = B; median2 = C;
 				}
 
@@ -169,19 +171,23 @@ namespace cv {
 				if (align == 0) {
 					bottom = median1;
 					right = median2;
-				} else if (slope < 0 && dist < 0) {
+				}
+				else if (slope < 0 && dist < 0) {
 					bottom = median1;
 					right = median2;
 					orientation = CV_QR_NORTH;
-				} else if (slope > 0 && dist < 0) {
+				}
+				else if (slope > 0 && dist < 0) {
 					right = median1;
 					bottom = median2;
 					orientation = CV_QR_EAST;
-				} else if (slope < 0 && dist > 0) {
+				}
+				else if (slope < 0 && dist > 0) {
 					right = median1;
 					bottom = median2;
 					orientation = CV_QR_SOUTH;
-				} else if (slope > 0 && dist > 0) {
+				}
+				else if (slope > 0 && dist > 0) {
 					bottom = median1;
 					right = median2;
 					orientation = CV_QR_WEST;
@@ -322,11 +328,14 @@ namespace cv {
 
 				if ((pd1 >= 0.0) && (pd2 > 0.0)) {
 					updateCorner(iContours[iID][i], W, dmax[1], M1);
-				} else if ((pd1 > 0.0) && (pd2 <= 0.0)) {
+				}
+				else if ((pd1 > 0.0) && (pd2 <= 0.0)) {
 					updateCorner(iContours[iID][i], X, dmax[2], M2);
-				} else if ((pd1 <= 0.0) && (pd2 < 0.0)) {
+				}
+				else if ((pd1 <= 0.0) && (pd2 < 0.0)) {
 					updateCorner(iContours[iID][i], Y, dmax[3], M3);
-				} else if ((pd1 < 0.0) && (pd2 >= 0.0)) {
+				}
+				else if ((pd1 < 0.0) && (pd2 >= 0.0)) {
 					updateCorner(iContours[iID][i], Z, dmax[0], M0);
 				}
 				else
@@ -341,11 +350,14 @@ namespace cv {
 			for (int i = 0; i < iContours[iID].size(); i++) {
 				if ((iContours[iID][i].x < halfx) && (iContours[iID][i].y <= halfy)) {
 					updateCorner(iContours[iID][i], C, dmax[2], M0);
-				} else if ((iContours[iID][i].x >= halfx) && (iContours[iID][i].y < halfy)) {
+				}
+				else if ((iContours[iID][i].x >= halfx) && (iContours[iID][i].y < halfy)) {
 					updateCorner(iContours[iID][i], D, dmax[3], M1);
-				} else if ((iContours[iID][i].x > halfx) && (iContours[iID][i].y >= halfy)) {
+				}
+				else if ((iContours[iID][i].x > halfx) && (iContours[iID][i].y >= halfy)) {
 					updateCorner(iContours[iID][i], A, dmax[0], M2);
-				} else if ((iContours[iID][i].x <= halfx) && (iContours[iID][i].y > halfy)) {
+				}
+				else if ((iContours[iID][i].x <= halfx) && (iContours[iID][i].y > halfy)) {
 					updateCorner(iContours[iID][i], B, dmax[1], M3);
 				}
 			}
@@ -378,17 +390,20 @@ namespace cv {
 			M1 = iIN[1];
 			M2 = iIN[2];
 			M3 = iIN[3];
-		} else if (orientation == CV_QR_EAST) {
+		}
+		else if (orientation == CV_QR_EAST) {
 			M0 = iIN[1];
 			M1 = iIN[2];
 			M2 = iIN[3];
 			M3 = iIN[0];
-		} else if (orientation == CV_QR_SOUTH) {
+		}
+		else if (orientation == CV_QR_SOUTH) {
 			M0 = iIN[2];
 			M1 = iIN[3];
 			M2 = iIN[0];
 			M3 = iIN[1];
-		} else if (orientation == CV_QR_WEST) {
+		}
+		else if (orientation == CV_QR_WEST) {
 			M0 = iIN[3];
 			M1 = iIN[0];
 			M2 = iIN[1];

@@ -247,7 +247,7 @@ namespace cv
 				{
 					double best_p = 0;
 					int best_idx = -1;
-					for (size_t j = 0; j<recognition_probabilities[i].size(); j++)
+					for (size_t j = 0; j < recognition_probabilities[i].size(); j++)
 					{
 						if (recognition_probabilities[i][j] > best_p)
 						{
@@ -411,7 +411,7 @@ namespace cv
 				// TODO  Add more heuristics (e.g. penalize large inter-character variance)
 
 				Mat interdist((int)segmentation.size() - 1, 1, CV_32F, 1);
-				for (size_t i = 0; i<segmentation.size() - 1; i++)
+				for (size_t i = 0; i < segmentation.size() - 1; i++)
 				{
 					interdist.at<float>((int)i, 0) = (float)oversegmentation[segmentation[(int)i + 1]] * step_size
 						- (float)oversegmentation[segmentation[(int)i]] * step_size;

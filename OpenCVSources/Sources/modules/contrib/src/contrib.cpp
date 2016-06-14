@@ -326,39 +326,39 @@ namespace cv {
 				return new LBPH(radius_, neighbors_, gridx, gridy, threshold);
 			}
 
-			JNIEXPORT void opencvunity_face_LBPHfaces_train_10(LBPH* ff_native_obj, Mat* data_native_obj, Mat* labels_native_obj) {
+			JNIEXPORT void opencvunity_face_LBPHfaces_train_10(LBPH* lbph_native_obj, Mat* data_native_obj, Mat* labels_native_obj) {
 				std::vector<Mat> data;
 				std::vector<int> labels;
 				Mat_to_vector_Mat(*data_native_obj, data);
 				Mat_to_vector_int(*labels_native_obj, labels);
-				ff_native_obj->train(data, labels);
+				lbph_native_obj->train(data, labels);
 			}
 
-			JNIEXPORT void opencvunity_face_LBPHfaces_update_10(LBPH* ff_native_obj, Mat* data_native_obj, Mat* labels_native_obj) {
+			JNIEXPORT void opencvunity_face_LBPHfaces_update_10(LBPH* lbph_native_obj, Mat* data_native_obj, Mat* labels_native_obj) {
 				std::vector<Mat> data;
 				std::vector<int> labels;
 				Mat_to_vector_Mat(*data_native_obj, data);
 				Mat_to_vector_int(*labels_native_obj, labels);
-				ff_native_obj->update(data, labels);
+				lbph_native_obj->update(data, labels);
 			}
 
-			JNIEXPORT void opencvunity_face_LBPHfaces_predict_10(LBPH* ff_native_obj, Mat* src_native_obj, PredictCollector* predict, int state) {
-				ff_native_obj->predict(*src_native_obj, *predict, state);
+			JNIEXPORT void opencvunity_face_LBPHfaces_predict_10(LBPH* lbph_native_obj, Mat* src_native_obj, PredictCollector* predict, int state) {
+				lbph_native_obj->predict(*src_native_obj, *predict, state);
 			}
 
-			JNIEXPORT void opencvunity_face_LBPHfaces_delete_10(LBPH* ff_native_obj) {
-				delete ff_native_obj;
+			JNIEXPORT void opencvunity_face_LBPHfaces_delete_10(LBPH* lbph_native_obj) {
+				delete lbph_native_obj;
 			}
 
-			JNIEXPORT void opencvunity_face_LBPHfaces_save_10(LBPH* ff_native_obj, const char* filename) {
+			JNIEXPORT void opencvunity_face_LBPHfaces_save_10(LBPH* lbph_native_obj, const char* filename) {
 				FileStorage fs(filename, FileStorage::WRITE);
-				ff_native_obj->save(fs);
+				lbph_native_obj->save(fs);
 				fs.release();
 			}
 
-			JNIEXPORT void opencvunity_face_LBPHfaces_load_10(LBPH* ff_native_obj, const char* filename) {
+			JNIEXPORT void opencvunity_face_LBPHfaces_load_10(LBPH* lbph_native_obj, const char* filename) {
 				FileStorage fs(filename, FileStorage::READ);
-				ff_native_obj->load(fs);
+				lbph_native_obj->load(fs);
 				fs.release();
 			}
 

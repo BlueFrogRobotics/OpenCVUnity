@@ -44,28 +44,26 @@ the use of this software, even if advised of the possibility of such damage.
 #include "opencv2/contrib/predict_collector.hpp"
 #include "opencv2/core/cvstd.hpp"
 namespace cv {
-namespace face {
-CV_WRAP bool VectorPredictCollector::emit(const int label, const double dist, const int state)
-{
-    ((void)state);
-    _idx->push_back(std::pair<int, double>(label, dist));
-    return true;
-}
-Ptr<std::vector<std::pair<int, double> > > VectorPredictCollector::getResult()
-{
-    return _idx;
-}
+	namespace face {
+		CV_WRAP bool VectorPredictCollector::emit(const int label, const double dist, const int state)
+		{
+			((void)state);
+			_idx->push_back(std::pair<int, double>(label, dist));
+			return true;
+		}
+		Ptr<std::vector<std::pair<int, double> > > VectorPredictCollector::getResult()
+		{
+			return _idx;
+		}
 
-CV_WRAP std::vector<std::pair<int, double> > VectorPredictCollector::getResultVector()
-{
-    return (*_idx);
-}
+		CV_WRAP std::vector<std::pair<int, double> > VectorPredictCollector::getResultVector()
+		{
+			return (*_idx);
+		}
 
-CV_WRAP Ptr<VectorPredictCollector> VectorPredictCollector::create(double threshold)
-{
-    return Ptr<VectorPredictCollector>(new VectorPredictCollector(threshold));
-}
-
-
-}
+		CV_WRAP Ptr<VectorPredictCollector> VectorPredictCollector::create(double threshold)
+		{
+			return Ptr<VectorPredictCollector>(new VectorPredictCollector(threshold));
+		}
+	}
 }

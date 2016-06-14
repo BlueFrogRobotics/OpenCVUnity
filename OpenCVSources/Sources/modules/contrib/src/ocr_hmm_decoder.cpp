@@ -262,7 +262,7 @@ namespace cv
 					meanStdDev(Mat(spaces), mean_space, std_space);
 					int num_word_spaces = 0;
 					int last_word_space_end = 0;
-					for (int s = 0; s<(int)spaces.size(); s++)
+					for (int s = 0; s < (int)spaces.size(); s++)
 					{
 						if (spaces_end.at(s) - spaces_start.at(s) > mean_space[0] + (mean_space[0] * 1.1)) //this 1.1 is a param?
 						{
@@ -511,7 +511,7 @@ namespace cv
 					meanStdDev(Mat(spaces), mean_space, std_space);
 					int num_word_spaces = 0;
 					int last_word_space_end = 0;
-					for (int s = 0; s<(int)spaces.size(); s++)
+					for (int s = 0; s < (int)spaces.size(); s++)
 					{
 						if (spaces_end.at(s) - spaces_start.at(s) > mean_space[0] + (mean_space[0] * 1.1)) //this 1.1 is a param?
 						{

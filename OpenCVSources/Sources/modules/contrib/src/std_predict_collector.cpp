@@ -44,22 +44,22 @@ the use of this software, even if advised of the possibility of such damage.
 #include "opencv2/contrib/predict_collector.hpp"
 #include "opencv2/core/cvstd.hpp"
 namespace cv {
-namespace face {
+	namespace face {
 
-CV_WRAP bool StdPredictCollector::emit(const int label, const double dist, const int state) {
-    ((void)state);
-    ((void)label);
-    _s += pow(dist - _avg, 2);
-    _n++;
-    return true;
-}
-CV_WRAP double StdPredictCollector::getResult() {
-    return sqrt(_s / (_n - 1));
-}
-CV_WRAP Ptr<StdPredictCollector> StdPredictCollector::create(double threshold, double avg) {
-    return Ptr<StdPredictCollector>(new StdPredictCollector(threshold, avg));
-}
+		CV_WRAP bool StdPredictCollector::emit(const int label, const double dist, const int state) {
+			((void)state);
+			((void)label);
+			_s += pow(dist - _avg, 2);
+			_n++;
+			return true;
+		}
+		CV_WRAP double StdPredictCollector::getResult() {
+			return sqrt(_s / (_n - 1));
+		}
+		CV_WRAP Ptr<StdPredictCollector> StdPredictCollector::create(double threshold, double avg) {
+			return Ptr<StdPredictCollector>(new StdPredictCollector(threshold, avg));
+		}
 
 
-}
+	}
 }

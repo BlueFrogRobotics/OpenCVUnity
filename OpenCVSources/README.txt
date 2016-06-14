@@ -1,4 +1,4 @@
-Doit être installés : 
+Doivent être installés : 
 	- CMake (https://cmake.org/download/)
 	- Python 2.7.11 (https://www.python.org/downloads/)
 	- Visual Studio 2013 ou 2015
@@ -25,7 +25,7 @@ Build Android :
 	- Cliquer à nouveau sur Add Entry
 		- Name : ANDROID_TOOLCHAIN_NAME
 		- Type : String
-		- Value : arm-linux-androideabi-4.9
+		- Value : [x86][arm-linux-androideabi]-4.9
 	- Valider
 	- Cliquer sur "Configure" (~ 3 minutes)
 	- Dans la configuration :
@@ -45,6 +45,7 @@ Build Android :
 	- Dans la configuration :
 		- ANDROID_SDK_TARGET : android-21
 	- Cliquer sur "Configure"
+	- Créer un fichier contrib.cpp vide dans Build_Android\modules\java\
 	- Cliquer sur "Generate"
 
 ---2) Compilation en invité de commande----
@@ -92,6 +93,8 @@ Soit XX = [x64 || x86] l'architecture souhaitée.
 	- Ajouter l'option /FORCE (en plus de /machine:x*) dans Linker/Command Line dans les projets :
 		- bindings/opencv_java
 		- modules/opencv_*\[hal || ts]
+	- Pour modules/opencv_core et modules/opencv_contrib, ajouter dans Propriétés/C++/Add includes path, 
+	les chemins vers Path/To/JDK/include et Path/To/JDK/include/win32
 	- Builder la solution (~ 5 minutes)
 	- Fermer Visual Studio
 

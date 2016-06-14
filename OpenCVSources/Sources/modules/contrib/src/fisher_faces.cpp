@@ -81,7 +81,7 @@ namespace cv {
 			// get the number of unique classes
 			int C = (int)remove_dups(ll).size();
 			// clip number of components to be a valid number
-			if ((_num_components <= 0) || (_num_components >(C - 1)))
+			if ((_num_components <= 0) || (_num_components > (C - 1)))
 				_num_components = (C - 1);
 			// perform a PCA and keep (N-C) components
 			PCA pca(data, Mat(), PCA::DATA_AS_ROW, (N - C));

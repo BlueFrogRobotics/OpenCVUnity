@@ -1,6 +1,7 @@
 [X] Remplir cette case
 
-[X] Centraliser au mieux les sources
+[] Centraliser au mieux les sources
+	[] Centraliser sources avec contrib
 
 [] Centraliser les conversions :
 	[X] Se baser sur la couche C# d'enox
