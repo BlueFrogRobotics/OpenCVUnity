@@ -24,9 +24,8 @@
 #include "contrib\ocr.hpp"
 #include "contrib\params.hpp"
 
-//#include "..\..\java\generator\src\cpp\converters.hpp"
 #include "..\..\java\generator\src\cpp\common.h"
-#include "opencv2/core/converters.hpp"
+#include "opencv2\contrib\converters.hpp"
 
 #include "face.hpp"
 #include "text.hpp"

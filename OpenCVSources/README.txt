@@ -85,6 +85,7 @@ Soit XX = [x64 || x86] l'architecture souhaitée.
 	- Cliquer sur "Configure"
 	- BUILD opencv_java a du apparaitre dans la configuration. Il doit être activé.
 	- Cliquer sur "Configure"
+	- Créer un fichier contrib.cpp vide dans Build_Android\modules\java\
 	- Cliquer sur "Generate"
 
   ---2) Compilation partielle dans Visual Studio----
