@@ -405,6 +405,41 @@ JNIEXPORT jdoubleArray JNICALL Java_org_opencv_core_Core_n_1minMaxLocManual
     }
 }
 
+JNIEXPORT void opencvunity_core_Core_n_1minMaxLocManual
+  (Mat* src_nativeObj, Mat* mask_nativeObj, double* result)
+{
+    try {
+        if (result == NULL) {
+            return; /* out of memory error thrown */
+        }
+
+        Mat& src = *((Mat*)src_nativeObj);
+
+        double minVal, maxVal;
+        Point minLoc, maxLoc;
+        if (mask_nativeObj != 0) {
+            Mat& mask = *((Mat*)mask_nativeObj);
+            minMaxLoc(src, &minVal, &maxVal, &minLoc, &maxLoc, mask);
+        } else {
+            minMaxLoc(src, &minVal, &maxVal, &minLoc, &maxLoc);
+        }
+
+        result[0]=minVal;
+        result[1]=maxVal;
+        result[2]=minLoc.x;
+        result[3]=minLoc.y;
+        result[4]=maxLoc.x;
+        result[5]=maxLoc.y;
+
+    return;
+
+    } catch(const cv::Exception& e) {
+        return;
+    } catch (...) {
+        return;
+    }
+}
+
 """,
         }, # minMaxLoc
 
@@ -487,6 +522,36 @@ JNIEXPORT jdoubleArray JNICALL Java_org_opencv_core_Core_n_1minMaxLocManual
         jclass je = env->FindClass("java/lang/Exception");
         env->ThrowNew(je, "Unknown exception in JNI code {core::getTextSize()}");
         return NULL;
+    }
+    }
+	
+	JNIEXPORT void opencvunity_imgproc_Imgproc_n_1getTextSize
+    (const char* text, int fontFace, double fontScale, int thickness, int* baseLine, double* vals)
+    {
+    try {
+        if (vals == NULL) {
+            return; /* out of memory error thrown */
+        }
+
+        int _baseLine;
+        int* pbaseLine = 0;
+
+        if (baseLine != NULL)
+            pbaseLine = &_baseLine;
+
+        cv::Size rsize = cv::getTextSize(text, (int)fontFace, (double)fontScale, (int)thickness, pbaseLine);
+
+        vals[0]=rsize.width;
+        vals[1]=rsize.height;
+
+        if (baseLine != NULL) {
+            baseLine[0] = (int)(*pbaseLine);
+        }
+
+    } catch(const cv::Exception& e) {
+        return;
+    } catch (...) {
+        return;
     }
     }
     """,
@@ -1287,10 +1352,13 @@ class JavaWrapperGenerator(object):
                      "jdouble _tmp_retval_[%(cnt)i] = {%(args)s}; " +
                      "env->SetDoubleArrayRegion(_da_retval_, 0, %(cnt)i, _tmp_retval_);") %
                     { "cnt" : len(fields), "args" : ", ".join(["(jdouble)_retval_" + f[1] for f in fields]) } )
+                #c_epilogue1.append( \
+                #    ("double _da_retval_ [%(cnt)i]= {%(args)s}; " +
+                #     "vals = _da_retval_;") %
+                #    { "cnt" : len(fields), "args" : ", ".join(["(double)_retval_" + f[1] for f in fields]) } )
                 c_epilogue1.append( \
-                    ("double _da_retval_ [%(cnt)i]= {%(args)s}; " +
-                     "vals = _da_retval_;") %
-                    { "cnt" : len(fields), "args" : ", ".join(["(double)_retval_" + f[1] for f in fields]) } )
+                     ("%(myvar)s") %
+                     { "cnt" : len(fields), "args" : ", ".join(["(double)_retval_" + f[1] for f in fields]), "myvar" : " ".join(["vals[" + str(i)+"] = "+"(double)_retval_"+fields[i][1]+" ;" for i in range(len(fields))]), "myvar1" : " ".join(["vals[" + str(i)+"] = "+"(double)_retval_"+fields[i][1]+" ;" for i in range(len(fields))]) } )
                 type_dict_ref[ "__int64"] = type_dict[ "__int64"]
             if fi.classname and fi.ctype and not fi.static: # non-static class method except c-tor
                 # adding 'self'
@@ -1383,6 +1451,9 @@ class JavaWrapperGenerator(object):
                         c_epilogue.append( \
                             "jdouble tmp_%(n)s[%(cnt)i] = {%(args)s}; env->SetDoubleArrayRegion(%(n)s_out, 0, %(cnt)i, tmp_%(n)s);" %
                             { "n" : a.name, "cnt" : len(fields), "args" : ", ".join(["(jdouble)" + a.name + f[1] for f in fields]) } )
+                        c_epilogue1.append( \
+                            "%(args)s" %
+                            { "n" : a.name, "cnt" : len(fields), "args" : " ".join([a.name+"_out ["+str(i)+"] = "+"(double)" + a.name + fields[i][1] +" ; " for i in range(len(fields)) ]) } )
                         if a.ctype in ('bool', 'int', 'long', 'float', 'double'):
                             j_epilogue.append('if(%(n)s!=null) %(n)s[0] = (%(t)s)%(n)s_out[0];' % {'n':a.name,'t':a.ctype})
                         else:
