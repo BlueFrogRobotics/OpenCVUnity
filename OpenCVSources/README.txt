@@ -97,12 +97,13 @@ Soit XX = [x64 || x86] l'architecture souhaitée.
 	- Pour modules/opencv_core et modules/opencv_contrib, ajouter dans Propriétés/C++/Add includes path, 
 	les chemins vers Path/To/JDK/include et Path/To/JDK/include/win32
 	- Builder la solution (~ 5 minutes)
+	- Si la compilation est réussie, vous avez généré la DLL opencv_java300.dll dans Build_XX\bin\Release\ . La compilation peut donner
+	des erreurs, même si elle est réussie. Cette bibliothèque n'est pas complète.
 	- Fermer Visual Studio
 
   ---3) Configuration pour la bibliothèque unique sur CMake---
-	- Si la compilation est réussie, vous avez généré la DLL opencv_java300.dll dans Build_XX\bin\Release\ . Cette bibliothèque n'est pas complète.
 	- Retourner sur CMake avec la dernière configuration générée pour Windows.
-	- Dans la configuration activer BUILD_OPENCV_WORLD
+	- Dans la configuration activer BUILD_opencv_world
 	- Cliquer sur "Configure"
 	- Cliquer sur "Generate"
 
