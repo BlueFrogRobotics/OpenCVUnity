@@ -60,37 +60,45 @@ namespace cv {
 	template<typename T>
 	void matToTexture(const Mat* mat, uchar* text, const T conv) {
 		size_t sizeTex = mat->total() * 4;
+		
+		int k = 0;
+		int cols4 = 4 * mat->cols;
+			
 		if (mat->channels() == 1) {
 			int k = 0;
 			for (size_t i = 0; i < sizeTex; i += 4) {
+				int j0 = sizeTex - cols4*(i / cols4 + 1) + i%cols4;
 				//text[i] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
 				//text[i + 1] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
 				//text[i + 2] = static_cast<uchar>(static_cast<T>(mat->data[k++]) * conv);
 				//text[i + 3] = 255;
-				text[sizeTex - 4 - i] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
-				text[sizeTex - 3 - i] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
-				text[sizeTex - 2 - i] = static_cast<uchar>(static_cast<T>(mat->data[k++]) * conv);
-				text[sizeTex - 1 - i] = 255;
+				text[j0] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
+				text[j0 + 1] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
+				text[j0 + 2] = static_cast<uchar>(static_cast<T>(mat->data[k++]) * conv);
+				text[j0 + 3] = 255;
 			}
 		}
 		else if (mat->channels() == 3) {
 			int k = 0;
 			for (size_t i = 0; i < sizeTex; i += 4) {
+				int j0 = sizeTex - cols4*(i / cols4 + 1) + i%cols4;
 				/*text[i] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
 				text[i + 1] = static_cast<uchar>(static_cast<T>(mat->data[k + 1]) * conv);
 				text[i + 2] = static_cast<uchar>(static_cast<T>(mat->data[k + 2]) * conv);
 				text[i + 3] = 255;
 				k += 3;*/
-				text[sizeTex - 4 - i] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
-				text[sizeTex - 3 - i] = static_cast<uchar>(static_cast<T>(mat->data[k + 1]) * conv);
-				text[sizeTex - 2 - i] = static_cast<uchar>(static_cast<T>(mat->data[k + 2]) * conv);
-				text[sizeTex - 1 - i] = 255;
+				text[j0] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
+				text[j0 + 1] = static_cast<uchar>(static_cast<T>(mat->data[k + 1]) * conv);
+				text[j0 + 2] = static_cast<uchar>(static_cast<T>(mat->data[k + 2]) * conv);
+				text[j0 + 3] = 255;
 				k += 3;
 			}
 		}
 		else if (mat->channels() == 4) {
-			for (size_t i = 0; i < sizeTex; ++i)
-				text[i] = static_cast<uchar>(mat->data[i]);
+			for (size_t i = 0; i < sizeTex; ++i){
+				int j0 = sizeTex - cols4*(i / cols4 + 1) + i%cols4;
+				text[j0] = static_cast<uchar>(mat->data[i]);
+			}
 		}
 	}
 
