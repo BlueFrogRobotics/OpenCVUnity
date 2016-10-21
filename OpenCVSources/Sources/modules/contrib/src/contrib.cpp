@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "opencv2/contrib.h"
 
 namespace cv {
@@ -60,37 +61,45 @@ namespace cv {
 	template<typename T>
 	void matToTexture(const Mat* mat, uchar* text, const T conv) {
 		size_t sizeTex = mat->total() * 4;
+		
+		int k = 0;
+		int cols4 = 4 * mat->cols;
+			
 		if (mat->channels() == 1) {
 			int k = 0;
 			for (size_t i = 0; i < sizeTex; i += 4) {
+				int j0 = sizeTex - cols4*(i / cols4 + 1) + i%cols4;
 				//text[i] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
 				//text[i + 1] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
 				//text[i + 2] = static_cast<uchar>(static_cast<T>(mat->data[k++]) * conv);
 				//text[i + 3] = 255;
-				text[sizeTex - 4 - i] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
-				text[sizeTex - 3 - i] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
-				text[sizeTex - 2 - i] = static_cast<uchar>(static_cast<T>(mat->data[k++]) * conv);
-				text[sizeTex - 1 - i] = 255;
+				text[j0] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
+				text[j0 + 1] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
+				text[j0 + 2] = static_cast<uchar>(static_cast<T>(mat->data[k++]) * conv);
+				text[j0 + 3] = 255;
 			}
 		}
 		else if (mat->channels() == 3) {
 			int k = 0;
 			for (size_t i = 0; i < sizeTex; i += 4) {
+				int j0 = sizeTex - cols4*(i / cols4 + 1) + i%cols4;
 				/*text[i] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
 				text[i + 1] = static_cast<uchar>(static_cast<T>(mat->data[k + 1]) * conv);
 				text[i + 2] = static_cast<uchar>(static_cast<T>(mat->data[k + 2]) * conv);
 				text[i + 3] = 255;
 				k += 3;*/
-				text[sizeTex - 4 - i] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
-				text[sizeTex - 3 - i] = static_cast<uchar>(static_cast<T>(mat->data[k + 1]) * conv);
-				text[sizeTex - 2 - i] = static_cast<uchar>(static_cast<T>(mat->data[k + 2]) * conv);
-				text[sizeTex - 1 - i] = 255;
+				text[j0] = static_cast<uchar>(static_cast<T>(mat->data[k]) * conv);
+				text[j0 + 1] = static_cast<uchar>(static_cast<T>(mat->data[k + 1]) * conv);
+				text[j0 + 2] = static_cast<uchar>(static_cast<T>(mat->data[k + 2]) * conv);
+				text[j0 + 3] = 255;
 				k += 3;
 			}
 		}
 		else if (mat->channels() == 4) {
-			for (size_t i = 0; i < sizeTex; ++i)
-				text[i] = static_cast<uchar>(mat->data[i]);
+			for (size_t i = 0; i < sizeTex; ++i){
+				int j0 = sizeTex - cols4*(i / cols4 + 1) + i%cols4;
+				text[j0] = static_cast<uchar>(mat->data[i]);
+			}
 		}
 	}
 
@@ -114,31 +123,38 @@ namespace cv {
 		if (mat->channels() == 1) {
 			int k = 0;
 			size_t sizeMat = mat->total();
+			int cols1 = mat->cols;
 			for (size_t i = 0; i < sizeMat; ++i) {
+				int j0 = sizeMat - cols1*(i / cols1 + 1) + i% cols1;
+				mat->data[j0] = static_cast<T>(text[k]) / conv;
 				//mat->data[i] = static_cast<T>(static_cast<T>(text[k]) / conv);
-				mat->data[sizeMat - 1 - i] = static_cast<T>(static_cast<T>(text[k]) / conv);
 				k += 4;
 			}
 		}
 		else if (mat->channels() == 3) {
 			int k = 0;
 			size_t sizeMat = mat->total() * 3 * sizeof(uchar);
+			int cols3 = mat->cols * 3;
 			for (size_t i = 0; i < sizeMat; i += 3) {
 				//mat->data[i] = static_cast<T>(static_cast<T>(text[k]) / conv);
 				//mat->data[i + 1] = static_cast<T>(static_cast<T>(text[k + 1]) / conv);
 				//mat->data[i + 2] = static_cast<T>(static_cast<T>(text[k + 2]) / conv);
 				//k += 4;
 
-				mat->data[sizeMat - 3 - i] = static_cast<T>(static_cast<T>(text[k]) / conv);
-				mat->data[sizeMat - 2 - i] = static_cast<T>(static_cast<T>(text[k + 1]) / conv);
-				mat->data[sizeMat - 1 - i] = static_cast<T>(static_cast<T>(text[k + 2]) / conv);
+				int j0 = sizeMat - cols3 * (i / cols3 + 1) + i % cols3;
+				mat->data[j0] = static_cast<T>(text[k]) / conv;
+				mat->data[j0 + 1] = static_cast<T>(text[k + 1]) / conv;
+				mat->data[j0 + 2] = static_cast<T>(text[k + 2]) / conv;
 				k += 4;
 			}
 		}
 		else if (mat->channels() == 4) {
 			size_t sizeMat = mat->total() * 4;
-			for (size_t i = 0; i < sizeMat; ++i)
-				mat->data[i] = text[i];
+			int cols4 = mat->cols * 4;
+			for (size_t i = 0; i < sizeMat; ++i) {
+				int j0 = sizeMat - cols4 * (i / cols4 + 1) + i % cols4;
+				mat->data[j0] = text[i];
+			}
 		}
 	}
 
@@ -150,7 +166,11 @@ namespace cv {
 #if WINDOWS_PLATFORM && __cplusplus
 	extern "C" {
 #endif
-
+		JNIEXPORT void opencvunity_exit()
+		{
+			exit(EXIT_FAILURE);
+		}
+        
 		JNIEXPORT const char* opencvunity_GetFilePath(const char* filename)
 		{
 			//TODO
